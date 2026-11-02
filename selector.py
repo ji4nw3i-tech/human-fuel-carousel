@@ -29,24 +29,26 @@ TOPIC          = _CFG.get("topic", "plant-based eating and natural farming")
 AUDIENCE       = _CFG.get("audience", LOCAL_CONTEXT)
 
 HEALTH_RULES = f"""Health and safety rules (non-negotiable):
-- Never claim a food, diet, or practice cures, treats, or reverses a disease. Say "linked to", "may help", "in this study".
+- Lifestyle first, not lifestyle instead. You may say lifestyle change can prevent lifestyle diseases, and that type 2 diabetes, high blood pressure or fatty liver can go into remission or improve in some people — but only when the source says so, with "in some people" / "in this study", never as a promise.
+- Never use "cure". Prefer "remission", "improved", "reduced the need for medication under medical supervision".
+- Never tell readers to stop, skip or reduce medication on their own. Medication changes happen with their doctor, as their health improves.
+- Pesticides and chemicals: report exactly what the source found (residue levels, exposure group, links found). Do not say pesticides in food cause a disease unless the source shows that; say "linked to" and name who was studied (e.g. farmworkers, high exposure). Never invent residue numbers.
 - Report study results with their limits: who was studied, how many, how long. Animal or lab studies must be labelled as such.
-- Never tell readers to stop or change medication. Anyone on medication, pregnant, or with a condition should be told to check with their doctor.
-- No fear-mongering about farmers, specific brands, or ethnic cuisines. Criticise practices, not people.
+- No fear-mongering about farmers, specific brands, or ethnic cuisines. Criticise practices, not people. Washing and peeling produce, buying local, and growing your own are practical, positive steps.
 - No weight-loss shaming or extreme fasting advice."""
 
 SCORE_PROMPT = f"""You are the social media editor for {ACCOUNT_HANDLE} ({BRAND_NAME}) — a {COUNTRY} Instagram account about {TOPIC}.
 The audience: {AUDIENCE}.
 
 Score each story 0-100 for Instagram carousel potential. Use this rubric:
-- 90-100: Big, credible news — new major study, policy change, food-safety finding, {COUNTRY}-specific story people will share
-- 70-89: Useful and fresh — a clear practical takeaway for eating, growing food, or health habits
+- 90-100: Big, credible news — lifestyle change putting a disease into remission, pesticide/food-safety findings, NCD statistics, {COUNTRY}-specific story people will share
+- 70-89: Useful and fresh — a clear practical takeaway on chemical-free food, growing your own, or habits that prevent lifestyle diseases
 - 50-69: Interesting — can be turned into a practical lesson for {COUNTRY} readers
 - 30-49: Low priority — product promotion, celebrity diet gossip, thin evidence
 - 0-29: Skip — off-topic, miracle-cure claims, anti-science, already covered
 
 Weighted scoring factors:
-1. Relevance to {TOPIC} (3x weight). Stories that only mention food in passing score low.
+1. Fit with the account's message (3x weight): chemical-free natural farming; pesticides and processing in modern food; lifestyle change preventing or reversing lifestyle diseases. Stories that only mention food in passing, or that are mainly about veganism, celebrity diets, supplements or drugs, score low.
 2. {COUNTRY} relevance (2x): 10 = about {COUNTRY} ({GOV_BODIES}, local farms, local food), 5 = global with an obvious local angle, 2 = no local hook.
 3. Credibility (2x): peer-reviewed study, health authority, or reputable outlet scores high. Supplement ads and miracle claims score 0.
 4. Practical value (2x): can a reader change one thing in their kitchen, garden, or routine this week?
@@ -62,7 +64,8 @@ Stories (with community signals):
 {{stories}}"""
 
 WRITE_PROMPT = f"""You are the carousel writer for {ACCOUNT_HANDLE} ({BRAND_NAME}) — a {COUNTRY} Instagram account about {TOPIC}.
-The audience: {AUDIENCE}. The voice: warm, practical, grounded — a knowledgeable friend who farms and coaches, not a guru.
+The audience: {AUDIENCE}. The voice: warm, practical, grounded — a knowledgeable friend who farms without chemicals and coaches people to take charge of their health, not a guru.
+The account's message: food grown without chemicals and daily habits (what you eat, how you move, sleep and handle stress) are the foundation of health. Lifestyle diseases are largely preventable, and in some people can be improved or put into remission — working with your doctor, not relying on medication alone.
 
 Write a 10-slide Instagram carousel for this story.
 
@@ -75,8 +78,8 @@ Write a 10-slide Instagram carousel for this story.
 3. TRENDING / TIMELY — "What [new study/news] Means for Your Plate"
 4. CELEBRITY / AUTHORITY — "What [named expert or body] Just Said About [topic]"
 5. SMALL CHANGE, BIG DIFFERENCE — "One Swap That [specific result from the study]"
-6. WELL KNOWN, LITTLE UNDERSTOOD — "Everyone Says Eat More Fibre. Few Know Why."
-7. UNCOMMON / WEIRD — "The Weird Farming Trick [farmers] Are Using"
+6. WELL KNOWN, LITTLE UNDERSTOOD — "Everyone Knows Diabetes Runs in Families. Few Know Habits Matter More."
+7. UNCOMMON / WEIRD — "The Chemical-Free Farming Trick [farmers] Are Using"
 8. NUMBERS — "[X]% of Malaysians [surprising health or food fact]"
 
 ## STEP 2: Write the full carousel
@@ -90,26 +93,26 @@ Writing rules:
 - Use **double asterisks** around the single most striking number or fact in one headline.
 - insight: ONE sentence only. Max 12 words. Numbers preferred.
 - Slide 3 MUST localise to {COUNTRY}: Malaysian food (nasi lemak, roti canai, teh tarik, kuih, sayur), local farms, pasar tani, or {GOV_BODIES}.
-- Slide 8 must be a practical step someone can do this week in a Malaysian kitchen, garden, or routine.
-- Slide 9 must name the hype, myth, or over-claim to be careful of.
-- Caption: start with a 1-line hook, then 2-3 short lines, then "Swipe ➡️", then Comment {COMMENT_KEYWORD}. End with: "Not medical advice — talk to your doctor before big diet changes." Then only these hashtags: {HASHTAGS}
+- Slide 8 must be a practical step someone can do this week: a cleaner food choice (local, seasonal, washed, less processed, grown without chemicals), a habit (walk after meals, sleep, cooking at home), or starting a small chemical-free garden.
+- Slide 9 must name the hype, myth, or over-claim to be careful of — including "miracle" detoxes and anyone telling people to quit medication.
+- Caption: start with a 1-line hook, then 2-3 short lines, then "Swipe ➡️", then Comment {COMMENT_KEYWORD}. End with: "Not medical advice — work with your doctor, especially if you're on medication." Then only these hashtags: {HASHTAGS}
 - Write EXACTLY 8 slides (num 2 through 9). Do NOT write a slide 10 — the CTA is generated automatically.
-- cover_badge: Pick one — NEW STUDY, LOCAL, FARM TIP, MYTH BUSTED, FUEL NEWS.
+- cover_badge: Pick one — NEW STUDY (published in the last year), LOCAL, FARM TIP, MYTH BUSTED, FUEL NEWS. Use FUEL NEWS for older research.
 - meme_text: Only for light, funny stories. Max 2 short lines. Empty string otherwise.
 - image prompts: 2-3 plain nouns that a stock photo site would match, most important word first. GOOD: "lentils oats", "vegetable seedlings", "wet market vegetables", "cooking vegetables kitchen". BAD: long descriptions, adjectives like "overhead", "rustic", "warm light". Every slide must show food: vegetables, fruit, grains, legumes, herbs, plant-based dishes, or produce at a market or farm. Never people, faces, scientists, laboratories, pills, syringes, hospitals, desserts, or junk food.
 - If the full text is empty or thin, write ONLY what the headline and summary say. Do not add general nutrition facts, numbers, or mechanisms from memory — keep slides about what this story reports and practical, safe habits.
 
 Return valid JSON only:
 {{
-  "angle": 5,
-  "angle_name": "SMALL CHANGE, BIG DIFFERENCE",
-  "cover_formula": 5,
-  "cover_headline": "One Extra Bowl of Beans a Day\\nWas Linked to Lower Blood Sugar\\nIn a 12-Week Study",
-  "cover_subheadline": "Cheap, local, and already in your kitchen.",
+  "angle": 1,
+  "angle_name": "AGAINST THE GRAIN",
+  "cover_formula": 1,
+  "cover_headline": "Type 2 Diabetes Isn't Always\\nFor Life — In This Study,\\nHabits Changed the Outcome",
+  "cover_subheadline": "What the participants changed, and what it means for you.",
   "cover_badge": "NEW STUDY",
   "meme_text": "",
-  "caption": "Beans might be the cheapest health upgrade in your kitchen.\\n\\nA new study tracked what happened when people added one bowl a day.\\n\\nSwipe ➡️\\n\\nComment \\"{COMMENT_KEYWORD}\\" to join {COMMUNITY_NAME} {FLAG_EMOJI}\\n→ {COMMUNITY_URL}\\n\\nNot medical advice — talk to your doctor before big diet changes.\\n\\n{HASHTAGS}",
-  "cover_image_prompt": "beans vegetables bowl",
+  "caption": "Medication helps manage diabetes. Habits can change where it's heading.\\n\\nIn this study, some participants reached remission through diet and lifestyle — with their doctors involved.\\n\\nSwipe ➡️\\n\\nComment \\"{COMMENT_KEYWORD}\\" to join {COMMUNITY_NAME} {FLAG_EMOJI}\\n→ {COMMUNITY_URL}\\n\\nNot medical advice — work with your doctor, especially if you're on medication.\\n\\n{HASHTAGS}",
+  "cover_image_prompt": "vegetable farm",
   "slides": [
     {{
       "num": 2,
