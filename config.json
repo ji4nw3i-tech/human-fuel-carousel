@@ -1,0 +1,136 @@
+{
+  "_comment": "The Human Fuel edition. topic, audience, keywords, feeds and queries steer what stories the bot picks. Posting uses the Instagram API (Instagram Login); the token lives in the INSTAGRAM_ACCESS_TOKEN secret, never in this file.",
+  "country": "Malaysia",
+  "brand_name": "The Human Fuel",
+  "topic": "natural farming, plant-based eating, and practical health coaching",
+  "audience": "busy Malaysians who want to eat cleaner, grow some of their own food, and feel healthier without extreme diets",
+  "cover_badge_default": "FUEL NEWS",
+  "cta_line": "Get plant-based tips and farm stories straight to your DMs",
+  "accent_color": "#B9E567",
+  "account_handle": "@thehumanfuel.farmacy",
+  "community_name": "The Human Fuel",
+  "community_url": "Link in bio",
+  "comment_keyword": "FUEL",
+  "flag_emoji": "🇲🇾",
+  "currency": "Ringgit (RM)",
+  "government_bodies": "Ministry of Health (KKM), Ministry of Agriculture (KPKM), MARDI, DOA",
+  "local_landmarks": "Cameron Highlands tea and vegetable farms, Kundasang, paddy fields of Kedah, pasar tani",
+  "local_context": "Malaysian families, home growers, small farmers, and people managing diabetes, blood pressure, or weight",
+  "local_keywords": [
+    "malaysia",
+    "malaysian",
+    "kkm",
+    "mardi",
+    "kpkm",
+    "cameron highlands",
+    "pasar",
+    "kuala lumpur",
+    "penang",
+    "sabah",
+    "sarawak",
+    "johor"
+  ],
+  "topic_keywords": [
+    "plant-based",
+    "plant based",
+    "vegan",
+    "vegetarian",
+    "whole food",
+    "wholefood",
+    "natural farming",
+    "organic",
+    "regenerative",
+    "permaculture",
+    "korean natural farming",
+    "compost",
+    "soil health",
+    "fermented",
+    "microgreens",
+    "urban farm",
+    "home garden",
+    "nutrition",
+    "diet",
+    "fibre",
+    "fiber",
+    "gut health",
+    "microbiome",
+    "diabetes",
+    "blood pressure",
+    "cholesterol",
+    "obesity",
+    "longevity",
+    "lifestyle medicine",
+    "ultra-processed",
+    "processed food",
+    "sugar",
+    "pesticide",
+    "superfood",
+    "health coach"
+  ],
+  "subreddits": [
+    "PlantBasedDiet",
+    "WholeFoodsPlantBased",
+    "vegan",
+    "permaculture",
+    "gardening",
+    "nutrition"
+  ],
+  "rss_feeds": [
+    [
+      "https://www.sciencedaily.com/rss/health_medicine/nutrition.xml",
+      "ScienceDaily Nutrition"
+    ],
+    [
+      "https://www.sciencedaily.com/rss/plants_animals/agriculture_and_food.xml",
+      "ScienceDaily Agriculture"
+    ],
+    [
+      "https://www.nutritionfacts.org/feed/",
+      "NutritionFacts.org"
+    ],
+    [
+      "https://www.hsph.harvard.edu/nutritionsource/feed/",
+      "Harvard Nutrition Source"
+    ]
+  ],
+  "posting": {
+    "slides_count": 10,
+    "max_hashtags": 5,
+    "hashtags": [
+      "#TheHumanFuel",
+      "#PlantBased",
+      "#NaturalFarming",
+      "#HealthyMalaysia",
+      "#WholeFood"
+    ]
+  },
+  "instagram": {
+    "username": "thehumanfuel.farmacy",
+    "api_host": "graph.instagram.com",
+    "api_version": "v23.0",
+    "user_id": "17841459429814958"
+  },
+  "google_news_queries": [
+    "Malaysia+plant-based+diet",
+    "Malaysia+vegetarian+vegan+food",
+    "Malaysia+organic+farming",
+    "Malaysia+natural+farming",
+    "Malaysia+urban+farming+home+garden",
+    "Malaysia+diabetes+diet",
+    "Malaysia+obesity+nutrition",
+    "KKM+healthy+eating+Malaysia",
+    "MARDI+farming+Malaysia",
+    "Malaysia+food+security+vegetables",
+    "Malaysia+pesticide+vegetables",
+    "plant-based+diet+study",
+    "whole+food+plant+based+research",
+    "regenerative+agriculture",
+    "Korean+natural+farming",
+    "gut+microbiome+fibre+study",
+    "ultra-processed+food+study",
+    "lifestyle+medicine+diet",
+    "longevity+diet+research",
+    "soil+health+farming"
+  ],
+  "use_article_image": false
+}
