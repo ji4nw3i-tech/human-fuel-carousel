@@ -2,7 +2,7 @@ name: Human Fuel Carousel
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 11:00 Malaysia time, daily
+        - cron: '37 12 * * *'   # 8:37pm Malaysia time, daily
   workflow_dispatch:
     inputs:
       dry_run:
