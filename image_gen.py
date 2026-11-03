@@ -158,7 +158,7 @@ def _fetch_pexels(query: str, slide_index: int, fallback_query: str | None = Non
 _PEOPLE_TAGS = {
     "man", "woman", "men", "women", "people", "person", "child", "children", "kid", "kids",
     "baby", "toddler", "boy", "girl", "portrait", "face", "family", "scientist", "chef",
-    "darwin", "franklin", "einstein", "model", "selfie",
+    "darwin", "franklin", "einstein", "model", "selfie", "hand", "hands", "finger", "fingers", "knife",
     # Plant-based brand: no meat or seafood either
     "meat", "beef", "chicken", "pork", "lamb", "mutton", "fish", "seafood", "shrimp",
     "prawn", "bacon", "sausage", "steak", "ham", "salami", "turkey", "duck", "burger",

@@ -99,7 +99,7 @@ Writing rules:
 - Write EXACTLY 8 slides (num 2 through 9). Do NOT write a slide 10 — the CTA is generated automatically.
 - cover_badge: Pick one — NEW STUDY (published in the last year), LOCAL, FARM TIP, MYTH BUSTED, FUEL NEWS. Use FUEL NEWS for older research.
 - meme_text: Only for light, funny stories. Max 2 short lines. Empty string otherwise.
-- image prompts: 2-3 plain nouns that a stock photo site would match, most important word first. GOOD: "lentils oats", "vegetable seedlings", "wet market vegetables", "cooking vegetables kitchen". BAD: long descriptions, adjectives like "overhead", "rustic", "warm light". Every slide must show food: vegetables, fruit, grains, legumes, herbs, plant-based dishes, or produce at a market or farm. Never people, faces, scientists, laboratories, pills, syringes, hospitals, desserts, or junk food.
+- image prompts: 2-3 plain nouns that a stock photo site would match, most important word first. GOOD: "lentils oats", "vegetable seedlings", "wet market vegetables", "glass water". BAD: long descriptions, adjectives like "overhead", "rustic", "warm light". Every slide must show food: vegetables, fruit, grains, legumes, herbs, plant-based dishes, or produce at a market or farm. When a slide is about a drink, show that drink: "glass water", "cola glass", "iced coffee", "bottled juice". Never people, hands, knives, faces, scientists, laboratories, pills, syringes, hospitals, desserts, or junk food.
 - If the full text is empty or thin, write ONLY what the headline and summary say. Do not add general nutrition facts, numbers, or mechanisms from memory — keep slides about what this story reports and practical, safe habits.
 
 Return valid JSON only:
@@ -161,7 +161,7 @@ Return valid JSON only:
       "label": "TRY THIS WEEK",
       "headline": "Write one practical step for a Malaysian kitchen, garden, or routine",
       "insight": "One sentence, max 12 words. Specific and cheap to do.",
-      "image_prompt": "cooking vegetables kitchen"
+      "image_prompt": "glass water"
     }},
     {{
       "num": 9,
