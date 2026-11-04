@@ -45,6 +45,24 @@ def hours_since_last_post() -> float:
     return delta.total_seconds() / 3600
 
 
+def mark_proposed(story: dict, new_img_urls: set | None = None):
+    """Reserve a story and its photos while it waits for approval, so the next run
+    does not pick them again. The post itself is logged by log_posted()."""
+    data = _load()
+    data.setdefault("urls", [])
+    data.setdefault("img_urls", [])
+    if story["url"] not in data["urls"]:
+        data["urls"].append(story["url"])
+    for u in (new_img_urls or set()):
+        if u not in data["img_urls"]:
+            data["img_urls"].append(u)
+    _LOG_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+
+def was_posted(run_id: str) -> bool:
+    return any(p.get("run_id") == run_id for p in _load().get("posts", []))
+
+
 def log_posted(story: dict, ig_post_id: str, carousel: dict, new_img_urls: set | None = None):
     data = _load()
     data.setdefault("urls", [])
@@ -62,6 +80,7 @@ def log_posted(story: dict, ig_post_id: str, carousel: dict, new_img_urls: set |
         "url": story["url"],
         "headline": story["headline"][:80],
         "ig_post_id": ig_post_id,
+        "run_id": story.get("run_id", ""),
         "posted_at": datetime.now(timezone.utc).isoformat(),
     })
 

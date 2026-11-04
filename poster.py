@@ -187,6 +187,20 @@ def post_carousel(base_url: str, user_id: str, caption: str, image_urls: list[st
     return str(media_id)
 
 
+def permalink(media_id: str, ig_cfg: dict) -> str:
+    """The public link to a published post, or '' if Instagram does not say."""
+    try:
+        response = requests.get(
+            f"{base_url_for(ig_cfg)}/{media_id}",
+            params={"fields": "permalink", "access_token": _token()},
+            timeout=REQUEST_TIMEOUT,
+        )
+        return str(_require_success(response, "permalink lookup").get("permalink", ""))
+    except Exception as e:
+        print(f"[poster] Could not fetch the post link: {e}")
+        return ""
+
+
 def run(image_urls: list[str], caption: str, ig_cfg: dict) -> str:
     """Validate the account, then publish the carousel. Returns the media id."""
     base_url = base_url_for(ig_cfg)

@@ -26,6 +26,7 @@ for _env_file in (".env", *_icloud_key_files):
             os.environ[_key] = _value.strip()
 
 import builder
+import cashflowos
 import config_check
 import hosting
 import image_gen
@@ -126,6 +127,8 @@ def run(dry_run: bool = False):
     stories = scraper.run()
     if not stories:
         print("[pipeline] No stories scraped — exiting.")
+        if not dry_run:
+            cashflowos.report("skipped", error="No stories found today")
         sys.exit(0)
 
     print("\n── STEP 2: DEDUP CHECK ──")
@@ -142,6 +145,8 @@ def run(dry_run: bool = False):
     pairs = selector.run(stories, posted_urls)
     if not pairs:
         print("[pipeline] No fresh stories to post — exiting.")
+        if not dry_run:
+            cashflowos.report("skipped", error="No fresh story worth posting today")
         sys.exit(0)
 
     story, carousel = pairs[0]
@@ -176,24 +181,73 @@ def run(dry_run: bool = False):
         print(f"\n[pipeline] DRY RUN — skipping post. PNGs at: ~/Downloads/carousels/{run_id}/")
         return
 
-    print("\n── STEP 6: HOST SLIDES ──")
-    image_urls = hosting.publish(png_paths, run_id)
-
-    print("\n── STEP 7: POST TO INSTAGRAM ──")
     caption = carousel.get("caption", "")
+    story["run_id"] = run_id
+    story["instagram_username"] = ig_cfg.get("username", "")
+
+    if cashflowos.enabled():
+        print("\n── STEP 6: HOST SLIDES + SEND FOR APPROVAL ──")
+        post_file = hosting.PUBLISH_DIR / run_id / "post.json"
+        post_file.parent.mkdir(parents=True, exist_ok=True)
+        post_file.write_text(json.dumps({
+            "story": {k: v for k, v in story.items() if k != "raw_text"},
+            "carousel": carousel,
+            "caption": caption,
+            "new_img_urls": sorted(new_img_urls),
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        image_urls = hosting.publish(png_paths, run_id, extra_files=[post_file])
+        logger.mark_proposed(story, new_img_urls)
+        cashflowos.propose(run_id, story, caption, image_urls)
+        print(f"\n✓ READY — waiting for your approval on Telegram: {story['headline'][:60]}")
+        return
+
+    print("\n── STEP 6: HOST SLIDES ──")
+    print("[pipeline] Approvals are off (no CASHFLOWOS_URL / CONTENT_SECRET) — posting directly.")
+    image_urls = hosting.publish(png_paths, run_id)
+    _post_and_log(story, carousel, caption, image_urls, ig_cfg, new_img_urls)
+
+
+def _post_and_log(story: dict, carousel: dict, caption: str, image_urls: list[str],
+                  ig_cfg: dict, new_img_urls) -> None:
+    print("\n── POST TO INSTAGRAM ──")
     media_id = poster.run(image_urls, caption, ig_cfg)
 
-    print("\n── STEP 8: LOG ──")
-    story["instagram_username"] = ig_cfg.get("username", "")
-    logger.log_posted(story, media_id, carousel, new_img_urls=new_img_urls)
+    print("\n── LOG ──")
+    logger.log_posted(story, media_id, carousel, new_img_urls=set(new_img_urls))
+    link = poster.permalink(media_id, ig_cfg)
+    cashflowos.report("posted", story.get("run_id", ""), story.get("headline", ""), permalink=link)
 
     print(f"\n✓ DONE — Posted: {story['headline'][:60]}")
-    print(f"  Instagram media ID: {media_id}")
-    print(f"  Slides at: ~/Downloads/carousels/{run_id}/")
+    print(f"  Instagram media ID: {media_id}  {link}")
+
+
+def publish(run_id: str) -> None:
+    """Post a carousel you approved on Telegram (slides were hosted by an earlier run)."""
+    if not re.fullmatch(r"\d{8}_\d{4}_[a-z_]+", run_id):
+        raise ValueError(f"Not a carousel run id: {run_id!r}")
+    with open("config.json", encoding="utf-8") as config_file:
+        ig_cfg = json.load(config_file)["instagram"]
+    if logger.was_posted(run_id):
+        print(f"[pipeline] {run_id} is already posted — nothing to do.")
+        return
+    saved = json.loads((hosting.PUBLISH_DIR / run_id / "post.json").read_text(encoding="utf-8"))
+    story = saved["story"]
+    print(f"[pipeline] Publishing approved carousel: {story['headline'][:70]}")
+    _post_and_log(story, saved["carousel"], saved["caption"], hosting.urls_for(run_id),
+                  ig_cfg, saved.get("new_img_urls", []))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="Build but don't post")
+    parser.add_argument("--publish", metavar="RUN_ID", help="Post a carousel approved on Telegram")
     args = parser.parse_args()
-    run(dry_run=args.dry_run)
+    try:
+        if args.publish:
+            publish(args.publish)
+        else:
+            run(dry_run=args.dry_run)
+    except Exception as e:
+        if not args.dry_run:
+            cashflowos.report("failed", args.publish or "", error=f"{type(e).__name__}: {e}")
+        raise

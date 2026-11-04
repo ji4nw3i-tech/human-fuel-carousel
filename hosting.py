@@ -5,6 +5,8 @@ PNG slides to JPEG, commits them to published/<run_id>/ in this (public) GitHub
 repository, pushes, and returns raw.githubusercontent.com URLs pinned to that commit.
 """
 
+from __future__ import annotations
+
 import os
 import re
 import subprocess
@@ -56,15 +58,15 @@ def _push_with_retry(branch: str, attempts: int = 3) -> None:
             time.sleep(10)
 
 
-def publish(png_paths: list[str], run_id: str) -> list[str]:
-    """Commit JPEG copies of the slides and return their public URLs."""
+def publish(png_paths: list[str], run_id: str, extra_files: list[Path] | None = None) -> list[str]:
+    """Commit JPEG copies of the slides (plus any extra files) and return their public URLs."""
     jpgs = to_jpegs(png_paths, PUBLISH_DIR / run_id)
     branch = os.environ.get("GITHUB_REF_NAME", "").strip() or _git("rev-parse", "--abbrev-ref", "HEAD")
 
     if os.environ.get("GITHUB_ACTIONS"):
         _git("config", "user.name", "github-actions[bot]")
         _git("config", "user.email", "github-actions[bot]@users.noreply.github.com")
-    _git("add", "-f", *[str(p) for p in jpgs])
+    _git("add", "-f", *[str(p) for p in [*jpgs, *(extra_files or [])]])
     _git("commit", "-m", f"chore: slides for {run_id} [skip ci]")
     _push_with_retry(branch)
 
@@ -73,3 +75,13 @@ def publish(png_paths: list[str], run_id: str) -> list[str]:
     urls = [f"https://raw.githubusercontent.com/{slug}/{sha}/{p.as_posix()}" for p in jpgs]
     print(f"[hosting] {len(urls)} slides public at {urls[0].rsplit('/', 1)[0]}/")
     return urls
+
+
+def urls_for(run_id: str) -> list[str]:
+    """Public URLs for slides committed by an earlier run (used after approval)."""
+    jpgs = sorted((PUBLISH_DIR / run_id).glob("slide_*.jpg"))
+    if not jpgs:
+        raise RuntimeError(f"No slides found in {PUBLISH_DIR / run_id}")
+    sha = _git("log", "-1", "--format=%H", "--", str(PUBLISH_DIR / run_id))
+    slug = _repo_slug()
+    return [f"https://raw.githubusercontent.com/{slug}/{sha}/{p.as_posix()}" for p in jpgs]
