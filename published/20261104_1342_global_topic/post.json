@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "Regenerative agriculture can build Southeast Asia’s resilience, if communities take the lead",
+    "summary": "Regenerative agriculture can build Southeast Asia’s resilience, if communities take the lead",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQMjRxODdlNXNXNzF2MzNsOWdaWU83ai10Yk1RWEtfN0E2V244QzZNMUtHTDVCY0VoSHMwd0JSVGlvb3RrNzNMcnp2UDhNYUdicUUtaW5OV01Sa3l2V3FsellPVTFZTGkyellseUs5YWREeDREM3N6RjNwY0k4bWZIbno4WmE2SXBkajVRRkpuUFJmc3lSQUM3T1JnYWZGMFNZUHNFdTRZVVhGdXpoQ2VHUnRKX1h1XzRmUGotS2NwX2RObkU1VzVZ?oc=5",
+    "source": "Eco-Business",
+    "published_at": "2026-11-03T03:03:00+00:00",
+    "category": "global_topic",
+    "query": "regenerative+agriculture",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.eco-business.com/opinion/regenerative-agriculture-can-build-southeast-asias-resilience-if-communities-take-the-lead/",
+    "og_image_url": "https://eco-business.imgix.net/ebmedia/fileuploads/Drying_Cocoa_Top.jpg?fit=crop&h=801&ixlib=django-1.2.0&q=85&w=1200",
+    "score": 68,
+    "score_reason": "Southeast Asia context, regenerative farming mission-fit",
+    "pillar": 5,
+    "run_id": "20261104_1342_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 5,
+    "cover_headline": "Regenerative Farming Works Best\nWhen Communities\nLead It",
+    "cover_image_prompt": "vegetable farm community",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE REALITY",
+        "headline": "Climate change is hitting Southeast Asian farms right now",
+        "insight": "Extreme weather is exposing fragile soils and single-crop farming across the region.",
+        "image_prompt": "paddy field drought"
+      },
+      {
+        "num": 3,
+        "label": "WHAT WORKS",
+        "headline": "Regenerative farming succeeds when built with communities",
+        "insight": "Farmers test ideas in their own soils. They decide what fits their reality.",
+        "image_prompt": "leafy greens farmer"
+      },
+      {
+        "num": 4,
+        "label": "THE NUMBER",
+        "headline": "Shared farm work reached **60%** in trained households",
+        "insight": "When women help shape farm decisions, farms invest more in soil health.",
+        "image_prompt": "fresh vegetables market"
+      },
+      {
+        "num": 5,
+        "label": "WHY WE EXIST",
+        "headline": "This is exactly why we are building The Human Fuel",
+        "insight": "A farm built honestly, with community and soil health at its centre.",
+        "image_prompt": "bare land farm Malaysia"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Ask where your vegetables actually come from",
+        "insight": "One question at the market starts a bigger conversation about your food.",
+        "image_prompt": "wet market vegetables"
+      }
+    ],
+    "sources": [
+      "Eco-Business, 2026 (Eco-Business)"
+    ],
+    "caption": "Regenerative farming works best when communities lead it.\n\nAcross Southeast Asia, extreme weather is exposing just how fragile our food systems are. The farms doing better share one thing: communities shape the work, not just experts.\n\nWe are building The Human Fuel the same way — honestly, from bare land, with you following every step. What matters most to you in how your food is grown?\n\nSources: Eco-Business, 2026 (Eco-Business)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "WHY WE EXIST",
+    "cover_subheadline": ""
+  },
+  "caption": "Regenerative farming works best when communities lead it.\n\nAcross Southeast Asia, extreme weather is exposing just how fragile our food systems are. The farms doing better share one thing: communities shape the work, not just experts.\n\nWe are building The Human Fuel the same way — honestly, from bare land, with you following every step. What matters most to you in how your food is grown?\n\nSources: Eco-Business, 2026 (Eco-Business)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g4596bd94d5ae336e5e2a9b55de1421ed20056b440df9e5a7bf11147e7a06437f904d23776652bfda21bdb0e674e5aa3b20ba88bd6354b8e7ba513725eae114f4_1280.jpg",
+    "https://pixabay.com/get/g5896abe4fa55c265f1e1ca321d34826a69c0a5daa12d316f666bc24398faff974fee2c57b7b1a2ae1daf5732d09c7da99099ff4d690fd15b1a60524ab074da8f_1280.jpg",
+    "https://pixabay.com/get/g66614b24d8944ed20fb8cae3e7653fb38619d08186e4be58111083bfa98ceea4b768fb04da9805a88279c18bd94a30d39a79cd02249ff8f4434d309c5b9ca111_1280.jpg",
+    "https://pixabay.com/get/g6699fd0365a6f9cca765d12317830da9a72ddca2be5290a7c9080dd52bff1dda4e9984c990817a96603cbf22aee1628c90df8e8e957b0e030ea1a50ccbe5a16d_1280.jpg",
+    "https://pixabay.com/get/g8ced71bec32a7d2d52b265e6fe5762d1c104aaf9a0e03a6ec7774bc18c4ab288c99f634baf28c9dc4cb04ace9469bbd947eb1a827744bd49346de09bbbe19652_1280.jpg",
+    "https://pixabay.com/get/gce5c606824b49079c672fdbffa2d47e32c94de54e4ac831e9db5551897a8e9ed7576ccef9eec65b85bef2fa12f6bf35ea0ec2e7ee428092a83372a41bd781b8d_1280.jpg",
+    "https://pixabay.com/get/gd29038c73e80cfac16ed94b6226669de55d20e07233a9d8ea9b0979dac3427ab9985407f5b0742e486237e9f907987e35af6488b46bd8af6dde29142a2c85ffa_1280.jpg"
+  ]
+}
