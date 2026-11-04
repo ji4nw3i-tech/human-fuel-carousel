@@ -2,13 +2,17 @@ name: Human Fuel Carousel
 
 on:
   schedule:
-        - cron: '37 12 * * *'   # 8:37pm Malaysia time, daily
+    - cron: '37 12 * * *'   # 8:37pm Malaysia time: build + send for approval
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Dry run — build slides only, do not post'
         type: boolean
         default: false
+      publish_run_id:
+        description: 'Set by Jarvis when you tap Approve'
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -32,11 +36,22 @@ jobs:
           pip install -r requirements.txt
           playwright install chromium --with-deps
       - name: Run pipeline
-        run: python pipeline.py ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+        run: |
+          if [ -n "$PUBLISH_RUN_ID" ]; then
+            python pipeline.py --publish "$PUBLISH_RUN_ID"
+          elif [ "$DRY_RUN" = "true" ]; then
+            python pipeline.py --dry-run
+          else
+            python pipeline.py
+          fi
         env:
+          PUBLISH_RUN_ID: ${{ github.event.inputs.publish_run_id }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          CASHFLOWOS_URL: ${{ secrets.CASHFLOWOS_URL }}
+          CONTENT_SECRET: ${{ secrets.CONTENT_SECRET }}
       - name: Save posted_urls.json
         if: ${{ github.event.inputs.dry_run != 'true' }}
         continue-on-error: true
