@@ -1,13 +1,13 @@
 # The Human Fuel — daily carousel bot
 
-Builds a 10-slide Instagram carousel for [@thehumanfuel.farmacy](https://www.instagram.com/thehumanfuel.farmacy/) about natural farming, plant-based eating, and practical health, and posts it with the official Instagram API.
+Builds an 8-slide Instagram carousel for [@thehumanfuel.farmacy](https://www.instagram.com/thehumanfuel.farmacy/) about natural farming, plant-based eating, and practical health, and posts it with the official Instagram API.
 
 Adapted from [kingsleylow123/news-blotato-autopost](https://github.com/kingsleylow123/news-blotato-autopost) (MIT).
 
 ## How a run works
 
 1. `scraper.py` pulls stories from Google News queries and the RSS feeds in `config.json`, and resolves Google News links to the real article.
-2. `selector.py` has Claude score the stories, then write 8 slides and a caption. The prompt forbids cure claims and invented facts, and every caption ends with a "not medical advice" line.
+2. `selector.py` has Claude score the stories against the brand brief (5 content pillars, rotated so no pillar runs twice in a row), then write the hook, 5 slides, sources and caption. A draft is rejected if it uses a number not in the source, a cure claim, a hook over 12 words or a slide over 30 words.
 3. `image_gen.py` finds a food photo per slide on Pixabay (or Pexels), skipping photos tagged with people or meat.
 4. `builder.py` renders the slides with Playwright.
 5. `hosting.py` commits JPEG copies to `published/` in this repo so Instagram can download them.
@@ -33,4 +33,4 @@ python poster.py               # check the Instagram connection, posts nothing
 python pipeline.py             # build and post
 ```
 
-The scheduled workflow (`.github/workflows/ai-news-carousel.yml`) runs daily at 03:00 UTC (11:00 Malaysia time).
+The scheduled workflow (`.github/workflows/human-fuel-carousel.yml`) runs daily at 12:37 UTC (8:37pm Malaysia time). With `CASHFLOWOS_URL` and `CONTENT_SECRET` set, it sends the slides to Telegram and posts only after you tap Approve.

@@ -2,11 +2,11 @@
   "_comment": "The Human Fuel edition. topic, audience, keywords, feeds and queries steer what stories the bot picks. Posting uses the Instagram API; the token lives in the INSTAGRAM_ACCESS_TOKEN secret, never in this file.",
   "country": "Malaysia",
   "brand_name": "The Human Fuel",
-  "topic": "chemical-free natural farming, the pesticides and processing in today's mostly non-organic food, and how lifestyle change can prevent — and in some cases reverse — lifestyle diseases like type 2 diabetes, high blood pressure and fatty liver",
-  "audience": "Malaysian families and working adults who want cleaner food, fewer chemicals on their plate, and to prevent or manage lifestyle diseases through daily habits alongside their doctor's care",
-  "cover_badge_default": "FUEL NEWS",
+  "topic": "natural farming, everyday food and health, Malaysia's food system, and growing your own food",
+  "audience": "Malaysian adults, especially parents aged 30–55, who want to eat better, are curious about growing food, or worry about lifestyle disease in their family.",
+  "cover_badge_default": "FOOD & HEALTH",
   "cta_line": "Get chemical-free food and lifestyle tips straight to your DMs",
-  "accent_color": "#B9E567",
+  "accent_color": "#C5E86C",
   "account_handle": "@thehumanfuel.farmacy",
   "community_name": "The Human Fuel",
   "community_url": "Link in bio",
@@ -77,14 +77,18 @@
     "lifestyle change",
     "exercise",
     "sleep",
-    "stress"
+    "stress",
+    "food security",
+    "food import",
+    "self-sufficiency",
+    "jadam",
+    "home garden",
+    "balcony",
+    "food miles",
+    "dosm",
+    "fao"
   ],
-  "subreddits": [
-    "permaculture",
-    "OrganicGardening",
-    "diabetes_t2",
-    "nutrition"
-  ],
+  "subreddits": [],
   "rss_feeds": [
     [
       "https://www.sciencedaily.com/rss/health_medicine/diabetes.xml",
@@ -101,21 +105,17 @@
     [
       "https://www.sciencedaily.com/rss/plants_animals/agriculture_and_food.xml",
       "ScienceDaily Agriculture"
-    ],
-    [
-      "https://www.nutritionfacts.org/feed/",
-      "NutritionFacts.org"
     ]
   ],
   "posting": {
     "slides_count": 10,
     "max_hashtags": 5,
     "hashtags": [
-      "#TheHumanFuel",
-      "#NaturalFarming",
-      "#ChemicalFree",
-      "#LifestyleMedicine",
-      "#HealthyMalaysia"
+      "#thehumanfuel",
+      "#farmacy",
+      "#naturalfarming",
+      "#eatrealfood",
+      "#malaysia"
     ]
   },
   "instagram": {
@@ -146,7 +146,17 @@
     "fatty+liver+diet+study",
     "ultra-processed+food+disease+study",
     "regenerative+agriculture",
-    "Korean+natural+farming"
+    "Korean+natural+farming",
+    "DOSM+food+import+Malaysia",
+    "Malaysia+food+self-sufficiency+ratio",
+    "Malaysia+food+security+vegetables",
+    "MARDI+research+vegetables",
+    "FAO+soil+health",
+    "WHO+healthy+diet",
+    "JADAM+natural+farming",
+    "Malaysia+home+garden+vegetables",
+    "urban+farming+Malaysia"
   ],
-  "use_article_image": false
+  "use_article_image": false,
+  "follow_line": "Follow @thehumanfuel.farmacy as we build a natural farm in Malaysia, step by step."
 }

@@ -40,11 +40,11 @@ def check_visual_quality(image_sources: list[str], dry_run: bool) -> int:
     """Block live publication when too many slides lack photographic backgrounds."""
     gradient_count = image_sources.count("gradient")
     if gradient_count:
-        print(f"[pipeline] Visual quality warning: {gradient_count}/10 slides use gradients")
+        print(f"[pipeline] Visual quality warning: {gradient_count}/{len(image_sources)} slides use gradients")
     if not dry_run and gradient_count > 2:
         raise RuntimeError(
             "Visual quality gate blocked publication: "
-            f"{gradient_count}/10 slides have no photographic background. "
+            f"{gradient_count}/{len(image_sources)} slides have no photographic background. "
             "Configure PIXABAY_API_KEY (or PEXELS_API_KEY), then run a dry run first."
         )
     return gradient_count
@@ -142,7 +142,7 @@ def run(dry_run: bool = False):
         sys.exit(0)
 
     print("\n── STEP 3: SELECT + WRITE ──")
-    pairs = selector.run(stories, posted_urls)
+    pairs = selector.run(stories, posted_urls, last_pillar=logger.last_pillar())
     if not pairs:
         print("[pipeline] No fresh stories to post — exiting.")
         if not dry_run:
@@ -167,9 +167,6 @@ def run(dry_run: bool = False):
 
     if not image_paths:
         raise RuntimeError("Image generation returned no slides")
-    while len(image_paths) < 10:
-        image_paths.append(image_paths[-1])
-    image_paths = image_paths[:10]
 
     print("\n── STEP 5: BUILD CAROUSEL ──")
     run_id = f"{run_ts}_{story.get('category', 'story')}"

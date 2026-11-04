@@ -59,6 +59,11 @@ class PublishTests(unittest.TestCase):
                 pipeline.publish("20261104_1237_global_topic")
             post.assert_not_called()
 
+    def test_same_story_with_new_google_link_is_recognised(self):
+        posted = logger.story_keys({"url": "https://news.google.com/old", "headline": "MOH Steps Up  Push"})
+        again = {"url": "https://news.google.com/new", "headline": "moh steps up push"}
+        self.assertTrue(logger.story_keys(again) & posted)
+
     def test_mark_proposed_reserves_story(self):
         with tempfile.TemporaryDirectory() as d:
             log = Path(d) / "posted_urls.json"

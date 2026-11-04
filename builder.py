@@ -1,4 +1,6 @@
-"""Build HTML carousel from story data + images, then export 10 PNGs via Playwright."""
+"""Build HTML carousel from story data + images, then export the PNGs via Playwright.
+
+Slides: cover, the inner slides, a Follow slide, and a Sources slide."""
 import asyncio
 import base64
 import html
@@ -17,6 +19,7 @@ FLAG_EMOJI     = _CFG.get("flag_emoji", "🇲🇾")
 BADGE_DEFAULT  = _CFG.get("cover_badge_default", "NEWS")
 CTA_LINE       = _CFG.get("cta_line", "Get stories like this straight to your DMs")
 ACCENT_COLOR   = _CFG.get("accent_color", "#C8714A")
+FOLLOW_LINE    = _CFG.get("follow_line", f"Follow {ACCOUNT_HANDLE} for more")
 
 # Replace logo.png with your own square image.
 _LOGO_PATH = Path(__file__).parent / "logo.png"
@@ -40,8 +43,13 @@ def _accent_line(text: str) -> str:
 _amber_line = _accent_line
 
 
+def slide_total(carousel: dict) -> int:
+    return len(carousel.get("slides", [])) + 3   # cover + inner + follow + sources
+
+
 def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
     slides_html = []
+    total = slide_total(carousel)
 
     # Load logo
     logo_b64 = _img_to_b64(str(_LOGO_PATH)) if _LOGO_PATH.exists() else ""
@@ -72,12 +80,12 @@ def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
       <div class="cover-bottom">
         <div class="cover-source"><span class="src-line"></span>{community_name}<span class="src-line"></span></div>
         <div class="cover-badge">● {badge}</div>
-        <h1 class="cover-h1">{carousel.get('cover_headline', BADGE_DEFAULT)}</h1>
+        <h1 class="cover-h1">{_accent_line(carousel.get('cover_headline', BADGE_DEFAULT)).replace(chr(10), '<br>')}</h1>
         <p class="cover-sub">{carousel.get('cover_subheadline', '')}</p>
         <div class="swipe-hint">SWIPE TO EXPLORE →</div>
-        <div class="dots">{_dots(10, 0)}</div>
+        <div class="dots">{_dots(total, 0)}</div>
       </div>
-      <div class="prog-track"><div class="prog-fill" style="width:10%"></div></div>
+      <div class="prog-track"><div class="prog-fill" style="width:{int(100 / total)}%"></div></div>
     </div>""")
 
     # ── Slides 2–9: Inner ───────────────────────────────────────────────────
@@ -85,39 +93,50 @@ def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
         idx     = i + 1
         img_b64 = _img_to_b64(image_paths[idx]) if idx < len(image_paths) else ""
         num     = slide.get("num", i + 2)
-        pct     = int((num / 10) * 100)
+        pct     = int((num / total) * 100)
         slides_html.append(f"""
     <div class="slide inner-slide">
       <div class="inner-photo" style="background-image:url('data:image/jpeg;base64,{img_b64}')"></div>
       <div class="inner-scrim"></div>
       <div class="top-line"></div>
-      <div class="slide-num">{num:02d}<span class="num-total"> /10</span></div>
+      <div class="slide-num">{num:02d}<span class="num-total"> /{total}</span></div>
       <span class="inner-handle">{handle}</span>
       <div class="inner-bottom">
         <div class="label">{slide.get('label', '')}</div>
-        <h2 class="inner-h2">{slide.get('headline', '')}</h2>
+        <h2 class="inner-h2">{_accent_line(slide.get('headline', ''))}</h2>
         <p class="insight">{slide.get('insight', '')}</p>
       </div>
       <div class="arr">›</div>
       <div class="prog-track"><div class="prog-fill" style="width:{pct}%"></div></div>
     </div>""")
 
-    # ── Slide 10: CTA ───────────────────────────────────────────────────────
-    cta_b64 = _img_to_b64(image_paths[-1]) if len(image_paths) >= 10 else ""
+    # ── Follow slide ────────────────────────────────────────────────────────
+    follow_b64 = _img_to_b64(image_paths[-1]) if len(image_paths) > len(carousel.get("slides", [])) + 1 else ""
     slides_html.append(f"""
     <div class="slide cta-slide">
-      <div class="cover-photo" style="background-image:url('data:image/jpeg;base64,{cta_b64}')"></div>
+      <div class="cover-photo" style="background-image:url('data:image/jpeg;base64,{follow_b64}')"></div>
       <div class="cover-scrim"></div>
       <div class="top-line"></div>
       {logo_html}
       <div class="cta-inner">
         <span class="cover-handle">{handle}</span>
         <div class="cta-body">
-          <h2 class="cta-h2">WANT MORE<br>STORIES LIKE THIS?</h2>
-          <div class="cta-btn">Comment <span class="acc">{comment_keyword}</span></div>
-          <p class="cta-desc">Join {community_name}<br>{html.escape(CTA_LINE, quote=True)}</p>
-          <div class="cta-url">{community_url}</div>
+          <h2 class="cta-h2">{html.escape(FOLLOW_LINE, quote=True)}</h2>
         </div>
+      </div>
+      <div class="prog-track"><div class="prog-fill" style="width:{int((total - 1) / total * 100)}%"></div></div>
+    </div>""")
+
+    # ── Sources slide ───────────────────────────────────────────────────────
+    sources_html = "".join(f"<li>{html.escape(str(src), quote=True)}</li>" for src in carousel.get("sources", []))
+    slides_html.append(f"""
+    <div class="slide sources-slide">
+      <div class="top-line"></div>
+      {logo_html}
+      <span class="cover-handle">{handle}</span>
+      <div class="sources-body">
+        <div class="label">SOURCES</div>
+        <ul class="sources-list">{sources_html}</ul>
       </div>
       <div class="prog-track"><div class="prog-fill" style="width:100%"></div></div>
     </div>""")
@@ -141,7 +160,7 @@ def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
   }}
 
   .viewport {{ width:{VIEWPORT_W}px; height:{VIEWPORT_H}px; overflow:hidden; position:relative; }}
-  .track    {{ display:flex; width:{10 * VIEWPORT_W}px; transition:transform .3s ease; }}
+  .track    {{ display:flex; width:{total * VIEWPORT_W}px; transition:transform .3s ease; }}
 
   /* ── Base Slide ── */
   .slide {{
@@ -307,6 +326,17 @@ def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
                  border-radius:30px; margin-bottom:20px; letter-spacing:.3px; }}
   .cta-desc   {{ font-size:12px; color:rgba(255,255,255,.60); line-height:1.65; margin-bottom:14px; }}
   .cta-url    {{ font-size:11px; font-weight:700; color:var(--acc); letter-spacing:.8px; }}
+
+  /* ── Sources ──────────────────────────────────────────────────── */
+  .sources-slide {{ background:var(--bg); }}
+  .sources-body {{
+    position:absolute; left:28px; right:28px; top:50%; transform:translateY(-50%); z-index:5;
+  }}
+  .sources-list {{ list-style:none; margin-top:14px; }}
+  .sources-list li {{
+    font-size:17px; line-height:1.5; color:var(--text); padding:12px 0;
+    border-top:1px solid var(--border);
+  }}
 </style>
 </head>
 <body>
@@ -318,7 +348,7 @@ def build_html(carousel: dict, image_paths: list[str], out_path: str) -> str:
 <script>
 let cur=0;
 function go(n){{
-  cur=Math.max(0,Math.min(9,n));
+  cur=Math.max(0,Math.min({total - 1},n));
   document.getElementById('track').style.transform=`translateX(-${{cur*{VIEWPORT_W}}}px)`;
 }}
 </script>
@@ -377,6 +407,6 @@ def run(carousel: dict, image_paths: list[str], run_id: str) -> list[str]:
     png_dir  = os.path.expanduser(f"~/Downloads/carousels/{run_id}")
 
     build_html(carousel, image_paths, html_out)
-    png_paths = export_pngs(html_out, png_dir)
+    png_paths = export_pngs(html_out, png_dir, slide_total(carousel))
     print(f"[builder] Done — {len(png_paths)} PNGs in {png_dir}")
     return png_paths

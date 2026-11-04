@@ -1,9 +1,12 @@
-"""Use Claude API to score stories and write 10-slide carousel content."""
+"""Use Claude API to score stories and write the carousel (the Human Fuel brief)."""
+from __future__ import annotations
 import os
 import json
 import re
 from pathlib import Path
 import anthropic
+
+from logger import story_keys
 
 client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
@@ -14,308 +17,267 @@ with open(_cfg_path) as f:
 
 COUNTRY        = _CFG.get("country", "Malaysia")
 ACCOUNT_HANDLE = _CFG.get("account_handle", "@YOUR_INSTAGRAM_HANDLE")
-COMMUNITY_NAME = _CFG.get("community_name", "YOUR_BRAND_NAME")
-COMMUNITY_URL  = _CFG.get("community_url", "YOUR_COMMUNITY_URL")
-COMMENT_KEYWORD = _CFG.get("comment_keyword", "YOUR_COMMENT_KEYWORD")
-CURRENCY       = _CFG.get("currency", "Ringgit (RM)")
 GOV_BODIES     = _CFG.get("government_bodies", "NAIO, MDEC")
-LANDMARKS      = _CFG.get("local_landmarks", "KLCC, Putrajaya")
-LOCAL_CONTEXT  = _CFG.get("local_context", "local founders and businesses")
-FLAG_EMOJI     = _CFG.get("flag_emoji", "🇲🇾")
 HASHTAGS       = " ".join(_CFG.get("posting", {}).get("hashtags", ["#AINews"]))
+BRAND_NAME     = _CFG.get("brand_name", "YOUR_BRAND_NAME")
+AUDIENCE       = _CFG.get("audience", "local readers")
 
-BRAND_NAME     = _CFG.get("brand_name", COMMUNITY_NAME)
-TOPIC          = _CFG.get("topic", "plant-based eating and natural farming")
-AUDIENCE       = _CFG.get("audience", LOCAL_CONTEXT)
+# Content pillars: rotate, never the same pillar twice in a row.
+PILLARS = {
+    1: "FOOD & HEALTH",
+    2: "NATURAL FARMING",
+    3: "FOOD SYSTEM FACTS",
+    4: "GROW YOUR OWN",
+    5: "WHY WE EXIST",
+}
 
-HEALTH_RULES = f"""Health and safety rules (non-negotiable):
-- Lifestyle first, not lifestyle instead. You may say lifestyle change can prevent lifestyle diseases, and that type 2 diabetes, high blood pressure or fatty liver can go into remission or improve in some people — but only when the source says so, with "in some people" / "in this study", never as a promise.
-- Never use "cure". Prefer "remission", "improved", "reduced the need for medication under medical supervision".
-- Never tell readers to stop, skip or reduce medication on their own. Medication changes happen with their doctor, as their health improves.
-- Pesticides and chemicals: report exactly what the source found (residue levels, exposure group, links found). Do not say pesticides in food cause a disease unless the source shows that; say "linked to" and name who was studied (e.g. farmworkers, high exposure). Never invent residue numbers.
-- Report study results with their limits: who was studied, how many, how long. Animal or lab studies must be labelled as such.
-- No fear-mongering about farmers, specific brands, or ethnic cuisines. Criticise practices, not people. Washing and peeling produce, buying local, and growing your own are practical, positive steps.
-- No weight-loss shaming or extreme fasting advice."""
+BRAND_BRIEF = f"""You create Instagram carousel posts for {BRAND_NAME} ({ACCOUNT_HANDLE}), a natural farm being built from bare land in {COUNTRY} by its founder.
 
-SCORE_PROMPT = f"""You are the social media editor for {ACCOUNT_HANDLE} ({BRAND_NAME}) — a {COUNTRY} Instagram account about {TOPIC}.
-The audience: {AUDIENCE}.
+MISSION
+"Farmacy": food grown naturally can do more for health than relying on medicine later. We grow food that is good for people, regenerates the soil and supports the community, and still pays its way. We document everything honestly, including failures and real numbers.
 
-Score each story 0-100 for Instagram carousel potential. Use this rubric:
-- 90-100: Big, credible news — lifestyle change putting a disease into remission, pesticide/food-safety findings, NCD statistics, {COUNTRY}-specific story people will share
-- 70-89: Useful and fresh — a clear practical takeaway on chemical-free food, growing your own, or habits that prevent lifestyle diseases
-- 50-69: Interesting — can be turned into a practical lesson for {COUNTRY} readers
-- 30-49: Low priority — product promotion, celebrity diet gossip, thin evidence
-- 0-29: Skip — off-topic, miracle-cure claims, anti-science, already covered
+AUDIENCE
+{AUDIENCE}
 
-Weighted scoring factors:
-1. Fit with the account's message (3x weight): chemical-free natural farming; pesticides and processing in modern food; lifestyle change preventing or reversing lifestyle diseases. Stories that only mention food in passing, or that are mainly about veganism, celebrity diets, supplements or drugs, score low.
-2. {COUNTRY} relevance (2x): 10 = about {COUNTRY} ({GOV_BODIES}, local farms, local food), 5 = global with an obvious local angle, 2 = no local hook.
-3. Credibility (2x): peer-reviewed study, health authority, or reputable outlet scores high. Supplement ads and miracle claims score 0.
-4. Practical value (2x): can a reader change one thing in their kitchen, garden, or routine this week?
-5. Community signals (1x): Reddit score 500+ = 10, 200+ = 8, 60+ = 5. No signals = 3.
+CONTENT PILLARS
+1. Food and health: what everyday Malaysian food does to the body, and simple better choices.
+2. Natural farming explained: soil, composting, JADAM, chemical-free growing, in plain words.
+3. Food system facts: where Malaysia's food comes from, imports, pesticides, freshness, food miles.
+4. Grow your own: small practical steps for a home garden or balcony in a tropical climate.
+5. Why {BRAND_NAME} exists: the idea of building a farm that serves health, soil and community.
 
-Also assign the best hook angle (1-8) for each story:
-1=Against The Grain, 2=Controversial, 3=Trending, 4=Celebrity, 5=Small Change Big Difference, 6=Well Known Little Understood, 7=Uncommon/Weird, 8=Numbers
+DO NOT POST
+Political content, attacks on brands or people, miracle diets, supplements, or anything that sells a product."""
+
+ACCURACY_RULES = """ACCURACY RULES (most important)
+- Only use facts from the supplied story. The story comes from an official or reputable source (DOSM, Ministry of Health Malaysia (MOH), WHO, FAO, MARDI, peer-reviewed studies, or established news outlets reporting them). Never add facts from memory.
+- Every statistic must match the source exactly: same number, same year, same definition. Do not round, combine figures, or relabel categories (e.g. "non-communicable diseases" is not the same as "lifestyle diseases").
+- Keep the full scope of compound facts. If the source says "fruit and vegetables", keep both; never narrow it to "just vegetables". If it says "data centres and cloud projects", never narrow it to "just data centres".
+- If the story does not support a claim, leave the claim out.
+- Never claim that any food cures, treats or prevents a disease. Say "supports", "is linked to" or "research suggests", as the source supports.
+- Most studies find a link, not a cause. Unless the source shows cause, write "linked to" / "associated with" — never "causes", "changes", "makes" or "leads to", in the hook too.
+- Say who was studied and how many when the source gives it (e.g. "46 children in the US"). Label animal or lab studies as such.
+- Never tell readers to stop, skip or reduce medication. Medication changes happen with their doctor.
+- Pesticides: say "linked to" and name who was studied; never say they cause a disease unless the source shows it.
+- Never invent quotes, people, farm results or harvests. The farm has not harvested yet."""
+
+SCORE_PROMPT = f"""{BRAND_BRIEF}
+
+You are choosing tonight's story. Score each story 0-100 and assign its best pillar (1-5).
+- 85-100: from a credible source (MOH, DOSM, WHO, FAO, MARDI, a peer-reviewed study, an established outlet), clearly fits a pillar, gives a {COUNTRY} parent something useful.
+- 60-84: credible and on-pillar, but less local or less practical.
+- 30-59: weak fit, thin evidence, or global with no local angle.
+- 0-29: anything in DO NOT POST, a non-credible source, miracle claims, product promotion, politics, or attacks on brands or people.
+
+Weighted factors: credibility (3x), pillar fit (3x), {COUNTRY} relevance (2x, {GOV_BODIES} and local food score high), practical value for a busy parent (2x).
 
 Return ONLY a compact JSON array — no explanation outside the array, no markdown fences. Keep reason under 8 words.
-[{{"index": 0, "score": 85, "category": "local", "angle": 5, "reason": "new fibre study, easy habit"}}]
+[{{"index": 0, "score": 85, "pillar": 3, "reason": "DOSM import data, local"}}]
 
-Stories (with community signals):
+Stories:
 {{stories}}"""
 
-WRITE_PROMPT = f"""You are the carousel writer for {ACCOUNT_HANDLE} ({BRAND_NAME}) — a {COUNTRY} Instagram account about {TOPIC}.
-The audience: {AUDIENCE}. The voice: warm, practical, grounded — a knowledgeable friend who farms without chemicals and coaches people to take charge of their health, not a guru.
-The account's message: food grown without chemicals and daily habits (what you eat, how you move, sleep and handle stress) are the foundation of health. Lifestyle diseases are largely preventable, and in some people can be improved or put into remission — working with your doctor, not relying on medication alone.
+WRITE_PROMPT = f"""{BRAND_BRIEF}
 
-Write a 10-slide Instagram carousel for this story.
+{ACCURACY_RULES}
 
-{HEALTH_RULES}
+TONE
+Hopeful, practical, warm and honest. Name a problem, then always give something the reader can do. No fear-mongering, shock headlines, or blame. Simple English that a busy parent reads in seconds.
 
-## STEP 1: Pick the single best hook angle
+Write the carousel for the story below, under pillar {{pillar}} ({{pillar_name}}).
 
-1. AGAINST THE GRAIN — "Why [common belief about food/health] Is Wrong"
-2. CONTROVERSIAL — "Is [popular food/trend] Actually Healthy?"
-3. TRENDING / TIMELY — "What [new study/news] Means for Your Plate"
-4. CELEBRITY / AUTHORITY — "What [named expert or body] Just Said About [topic]"
-5. SMALL CHANGE, BIG DIFFERENCE — "One Swap That [specific result from the study]"
-6. WELL KNOWN, LITTLE UNDERSTOOD — "Everyone Knows Diabetes Runs in Families. Few Know Habits Matter More."
-7. UNCOMMON / WEIRD — "The Chemical-Free Farming Trick [farmers] Are Using"
-8. NUMBERS — "[X]% of Malaysians [surprising health or food fact]"
+STRUCTURE (8 slides; you write slides 1-6, slides 7-8 are added automatically)
+- Slide 1 (cover_headline): the hook. A surprising fact or question from the story, MAX 12 words. No clickbait. Use \\n for line breaks (2-3 lines).
+- Slides 2-5: one idea per slide. headline MAX 12 words, insight MAX 14 words (30 words per slide is the hard limit).
+- Slide 6: one simple action the reader can do this week (label "TRY THIS WEEK"). Same word limits.
+- Count the words. Short wins: a busy parent reads each slide in seconds.
+- Slide 7 (automatic): "Follow {ACCOUNT_HANDLE} as we build a natural farm in {COUNTRY}, step by step."
+- Slide 8 (automatic): Sources — built from your "sources" list.
+- Use **double asterisks** around the single most striking number in one headline.
+- labels: 1-3 words, uppercase.
 
-## STEP 2: Write the full carousel
+SOURCES
+- "sources": one entry per source, naming the organisation or study behind every number AND the year, plus the outlet that reported it. Example: "Ministry of Health Malaysia, 2026 (reported by The Vibes)". Only sources named in the story.
 
-Writing rules:
-- Write like a friend explaining it over WhatsApp. Simple words. No jargon without explaining it.
-- Preserve every date, number, sample size, organisation, and attribution exactly as supplied by the source. Never invent a fact, statistic, or quote.
-- Preserve the full scope of compound facts. If the source says "fruit and vegetables", keep both; never narrow it to "just vegetables". If it says "data centres and cloud projects", never narrow it to "just data centres".
-- Cover headline: Title Case. Include a specific number or name if the story has one. Max 10 words per line, 2-3 lines.
-- Every slide headline must be a specific, conversational statement — not a generic label.
-- Use **double asterisks** around the single most striking number or fact in one headline.
-- insight: ONE sentence only. Max 12 words. Numbers preferred.
-- Slide 3 MUST localise to {COUNTRY}: Malaysian food (nasi lemak, roti canai, teh tarik, kuih, sayur), local farms, pasar tani, or {GOV_BODIES}.
-- Slide 8 must be a practical step someone can do this week: a cleaner food choice (local, seasonal, washed, less processed, grown without chemicals), a habit (walk after meals, sleep, cooking at home), or starting a small chemical-free garden.
-- Slide 9 must name the hype, myth, or over-claim to be careful of — including "miracle" detoxes and anyone telling people to quit medication.
-- Caption: start with a 1-line hook, then 2-3 short lines, then "Swipe ➡️", then Comment {COMMENT_KEYWORD}. End with: "Not medical advice — work with your doctor, especially if you're on medication." Then only these hashtags: {HASHTAGS}
-- Write EXACTLY 8 slides (num 2 through 9). Do NOT write a slide 10 — the CTA is generated automatically.
-- cover_badge: Pick one — NEW STUDY (published in the last year), LOCAL, FARM TIP, MYTH BUSTED, FUEL NEWS. Use FUEL NEWS for older research.
-- meme_text: Only for light, funny stories. Max 2 short lines. Empty string otherwise.
-- image prompts: 2-3 plain nouns that a stock photo site would match, most important word first. GOOD: "lentils oats", "vegetable seedlings", "wet market vegetables", "glass water". BAD: long descriptions, adjectives like "overhead", "rustic", "warm light". Every slide must show food: vegetables, fruit, grains, legumes, herbs, plant-based dishes, or produce at a market or farm. When a slide is about a drink, show that drink: "glass water", "cola glass", "iced coffee", "bottled juice". Never people, hands, knives, faces, scientists, laboratories, pills, syringes, hospitals, desserts, or junk food.
-- If the full text is empty or thin, write ONLY what the headline and summary say. Do not add general nutrition facts, numbers, or mechanisms from memory — keep slides about what this story reports and practical, safe habits.
+CAPTION
+Line 1 repeats the hook (one line, no \\n inside it). Then 2-4 short lines that add context, ending with a question to invite comments. If the post mentions a disease or medication, add the line "Not medical advice." Then one line starting "Sources: " listing the sources. Then exactly these hashtags on the last line: {HASHTAGS}
+
+IMAGES
+- image prompts: 2-3 plain nouns a stock photo site would match, most important word first. Prefer real-looking Malaysian food, markets and farms: "wet market vegetables", "nasi lemak", "paddy field", "vegetable farm", "glass water". When a slide is about a drink, show that drink.
+- Never people, hands, knives, faces, laboratories, pills, hospitals, or junk food. Never anything that could pass as our own farm's harvest.
 
 Return valid JSON only:
 {{
-  "angle": 1,
-  "angle_name": "AGAINST THE GRAIN",
-  "cover_formula": 1,
-  "cover_headline": "Type 2 Diabetes Isn't Always\\nFor Life — In This Study,\\nHabits Changed the Outcome",
-  "cover_subheadline": "What the participants changed, and what it means for you.",
-  "cover_badge": "NEW STUDY",
-  "meme_text": "",
-  "caption": "Medication helps manage diabetes. Habits can change where it's heading.\\n\\nIn this study, some participants reached remission through diet and lifestyle — with their doctors involved.\\n\\nSwipe ➡️\\n\\nComment \\"{COMMENT_KEYWORD}\\" to join {COMMUNITY_NAME} {FLAG_EMOJI}\\n→ {COMMUNITY_URL}\\n\\nNot medical advice — work with your doctor, especially if you're on medication.\\n\\n{HASHTAGS}",
-  "cover_image_prompt": "vegetable farm",
+  "pillar": {{pillar}},
+  "cover_headline": "Most of Malaysia's Vegetables\\nTravel Before They Reach\\nYour Plate. Why?",
+  "cover_image_prompt": "wet market vegetables",
   "slides": [
-    {{
-      "num": 2,
-      "label": "WHAT HAPPENED",
-      "headline": "Write a specific 8-10 word headline describing the actual news or finding",
-      "insight": "One sentence, max 12 words. Who was studied, how many, how long.",
-      "image_prompt": "fresh vegetables"
-    }},
-    {{
-      "num": 3,
-      "label": "{COUNTRY} ANGLE",
-      "headline": "Write how this connects to Malaysian food, farms, or health",
-      "insight": "One sentence, max 12 words. A local fact or everyday Malaysian example.",
-      "image_prompt": "wet market vegetables"
-    }},
-    {{
-      "num": 4,
-      "label": "THE NUMBER",
-      "headline": "Write the key stat as a surprising statement",
-      "insight": "One sentence, max 12 words. The exact figure from the source.",
-      "image_prompt": "legumes grains"
-    }},
-    {{
-      "num": 5,
-      "label": "MOST PEOPLE DON'T KNOW",
-      "headline": "Write the counterintuitive truth this story reveals",
-      "insight": "One sentence, max 12 words.",
-      "image_prompt": "soil seedling"
-    }},
-    {{
-      "num": 6,
-      "label": "WHAT THE EXPERTS SAY",
-      "headline": "Write what a named researcher, doctor, or body actually said",
-      "insight": "One sentence, max 12 words. Only a quote or claim present in the source.",
-      "image_prompt": "lentils beans"
-    }},
-    {{
-      "num": 7,
-      "label": "WHY IT WORKS",
-      "headline": "Write the simple mechanism or reason behind the finding",
-      "insight": "One sentence, max 12 words. Plain-language explanation.",
-      "image_prompt": "leafy greens garden"
-    }},
-    {{
-      "num": 8,
-      "label": "TRY THIS WEEK",
-      "headline": "Write one practical step for a Malaysian kitchen, garden, or routine",
-      "insight": "One sentence, max 12 words. Specific and cheap to do.",
-      "image_prompt": "glass water"
-    }},
-    {{
-      "num": 9,
-      "label": "BE CAREFUL OF",
-      "headline": "Write the hype, myth, or over-claim people should not fall for",
-      "insight": "One sentence, max 12 words.",
-      "image_prompt": "fruits vegetables"
-    }}
-  ]
+    {{"num": 2, "label": "WHAT THEY FOUND", "headline": "...", "insight": "...", "image_prompt": "vegetable farm"}},
+    {{"num": 3, "label": "WHY IT MATTERS", "headline": "...", "insight": "...", "image_prompt": "paddy field"}},
+    {{"num": 4, "label": "THE NUMBER", "headline": "...", "insight": "...", "image_prompt": "fresh vegetables"}},
+    {{"num": 5, "label": "IN MALAYSIA", "headline": "...", "insight": "...", "image_prompt": "leafy greens"}},
+    {{"num": 6, "label": "TRY THIS WEEK", "headline": "...", "insight": "...", "image_prompt": "glass water"}}
+  ],
+  "sources": ["Organisation or study, year (reported by Outlet)"],
+  "caption": "Hook line\\n\\nContext line.\\nContext line ending with a question?\\n\\nSources: Organisation, year (Outlet)\\n\\n{HASHTAGS}"
 }}
 
-IMPORTANT: You MUST return valid JSON no matter what. If article text is limited, use only facts present in the headline, summary, and supplied full text. Do not fill gaps from memory or invent specifics. Never refuse or explain — just write a conservative carousel and return JSON.
+If the story text is thin, write only what the headline and summary say. Never refuse or explain — return JSON.
 
-Story to write about:
+Story:
 Headline: {{headline}}
+Source outlet: {{source}}
+Published: {{published_at}}
 Summary: {{summary}}
-Full text: {{raw_text}}
-Category: {{category}}"""
+Full text: {{raw_text}}"""
+
+
+_WORD_NUMBERS = {w: str(i) for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve".split())}
+
+
+def _numbers(text: str) -> set[str]:
+    """Numbers as digits, without thousands separators: '96,000' -> '96000', 'six' -> '6'."""
+    text = re.sub(r"\b(" + "|".join(_WORD_NUMBERS) + r")\b", lambda m: _WORD_NUMBERS[m.group(1).lower()], text, flags=re.I)
+    return {n.replace(",", "").rstrip(".") for n in re.findall(r"\d[\d,]*(?:\.\d+)?", text)}
+
+
+def unsupported_numbers(story: dict, carousel: dict) -> set[str]:
+    """Numbers in the carousel or caption that do not appear in the source story."""
+    source = " ".join(str(story.get(k, "")) for k in ("headline", "summary", "raw_text", "published_at", "source"))
+    written = " ".join(
+        [carousel.get("cover_headline", ""), carousel.get("caption", ""), " ".join(carousel.get("sources", []))]
+        + [f"{s.get('headline', '')} {s.get('insight', '')}" for s in carousel.get("slides", [])]
+    )
+    written = re.sub(r"#\w+", "", written)  # hashtags are not facts
+    return _numbers(written) - _numbers(source)
+
+
+def _check_carousel(story: dict, carousel: dict) -> None:
+    """Hard rules from the brief. Raise so the next story is tried instead."""
+    slides = carousel.get("slides", [])
+    if len(slides) != 5:
+        raise ValueError(f"expected 5 inner slides, got {len(slides)}")
+    if len(carousel.get("cover_headline", "").split()) > 12:
+        raise ValueError("hook is longer than 12 words")
+    for s in slides:
+        if len(f"{s.get('headline', '')} {s.get('insight', '')}".replace("**", "").split()) > 30:
+            raise ValueError(f"slide {s.get('num')} is longer than 30 words")
+    if not carousel.get("sources"):
+        raise ValueError("no sources listed")
+    if re.search(r"\b(cures?|cured|treats?)\b", json.dumps(carousel).lower()):
+        raise ValueError("cure/treat claim")
+    missing = unsupported_numbers(story, carousel)
+    if missing:
+        raise ValueError(f"numbers not found in the source: {sorted(missing)}")
 
 
 def score_stories(stories: list[dict]) -> list[dict]:
     """Score all stories and return sorted list."""
-    def _signal_str(s: dict) -> str:
-        parts = []
-        if s.get("hn_score", 0) >= 150:
-            parts.append(f"HN:{s['hn_score']}pts")
-        if s.get("reddit_score", 0) >= 60:
-            parts.append(f"Reddit:{s['reddit_score']}↑")
-        if s.get("gh_stars", 0) >= 100:
-            parts.append(f"GH:{s['gh_stars']}★")
-        return " | " + " ".join(parts) if parts else ""
-
     stories_text = "\n".join(
-        f"[{i}] {s['headline']} | {s['source']} | {s['category']}{_signal_str(s)}"
-        for i, s in enumerate(stories)
+        f"[{i}] {s['headline']} | {s['source']} | {s['category']}" for i, s in enumerate(stories)
     )
-
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=8000,
         messages=[{"role": "user", "content": SCORE_PROMPT.replace("{stories}", stories_text)}]
     )
-    text = resp.content[0].text.strip()
-    # Strip markdown code fences if present
-    text = re.sub(r"```(?:json)?\s*", "", text).strip()
-    # Extract JSON array
+    text = re.sub(r"```(?:json)?\s*", "", resp.content[0].text.strip()).strip()
     start = text.find("[")
     end = text.rfind("]") + 1
     if start == -1 or end == 0:
         print(f"[selector] Score parse failed — raw response:\n{text[:300]}")
-        # Return stories with default score 50
         for s in stories:
             s.setdefault("score", 50)
-            s.setdefault("suggested_angle", 3)
+            s.setdefault("pillar", 1)
         return stories
-    scores = json.loads(text[start:end])
 
-    for s in scores:
+    for s in json.loads(text[start:end]):
         idx = s["index"]
         if idx < len(stories):
             stories[idx]["score"] = s["score"]
             stories[idx]["score_reason"] = s.get("reason", "")
-            stories[idx]["suggested_angle"] = s.get("angle", 3)
-
+            stories[idx]["pillar"] = s.get("pillar", 1) if s.get("pillar") in PILLARS else 1
     return sorted(stories, key=lambda x: x.get("score", 0), reverse=True)
 
 
 def write_carousel(story: dict) -> dict:
-    """Write full 10-slide carousel content for a story."""
+    """Write the carousel for a story, then enforce the brief's hard rules."""
+    pillar = story.get("pillar", 1)
     prompt = (WRITE_PROMPT
+        .replace("{pillar}", str(pillar))
+        .replace("{pillar_name}", PILLARS[pillar])
         .replace("{headline}", story["headline"])
+        .replace("{source}", story.get("source", ""))
+        .replace("{published_at}", str(story.get("published_at", "")))
         .replace("{summary}", story.get("summary", ""))
-        .replace("{raw_text}", story.get("raw_text", "")[:2000])
-        .replace("{category}", story.get("category", "global_topic"))
+        .replace("{raw_text}", story.get("raw_text", "")[:3000])
     )
+    messages = [{"role": "user", "content": prompt}]
+    for attempt in (1, 2):   # one chance to fix a draft that breaks the rules
+        resp = client.messages.create(model="claude-sonnet-4-6", max_tokens=4000, messages=messages)
+        text = re.sub(r"```(?:json)?\s*", "", resp.content[0].text.strip()).strip()
+        start = text.find("{")
+        end = text.rfind("}") + 1
+        if start == -1 or end == 0:
+            raise ValueError(f"[selector] write_carousel parse failed:\n{text[:300]}")
+        carousel = json.loads(text[start:end])
+        carousel["pillar"] = pillar
+        carousel["cover_badge"] = PILLARS[pillar]
+        carousel["cover_subheadline"] = ""
+        try:
+            _check_carousel(story, carousel)
+            return carousel
+        except ValueError as e:
+            if attempt == 2:
+                raise
+            print(f"[selector] Draft broke a rule ({e}) — asking for a fix")
+            messages += [
+                {"role": "assistant", "content": text},
+                {"role": "user", "content": f"This breaks a rule: {e}. Fix it (shorten, or remove anything the source does not say) and return the full JSON only."},
+            ]
 
-    resp = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=4000,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    text = resp.content[0].text.strip()
-    # Strip markdown code fences
-    text = re.sub(r"```(?:json)?\s*", "", text).strip()
-    start = text.find("{")
-    end = text.rfind("}") + 1
-    if start == -1 or end == 0:
-        raise ValueError(f"[selector] write_carousel parse failed:\n{text[:300]}")
-    return json.loads(text[start:end])
+
+_BLOCKLIST = [
+    "us politics", "trump", "election", "by-election", "congress", "senate bill",
+    "nfl", "nba", "premier league", "cricket",
+    "miracle", "cures cancer", "detox", "weight loss pill", "supplement",
+    "ozempic", "wegovy", "discount code", "promo", "giveaway", "sponsored",
+]
 
 
-def run(stories: list[dict], posted_urls: set) -> tuple[dict, dict]:
-    """Select top stories and write carousels. Retries next story if write fails."""
-    # Filter already posted
-    fresh = [s for s in stories if s["url"] not in posted_urls]
+def run(stories: list[dict], posted_urls: set, last_pillar: int | None = None) -> list[tuple[dict, dict]]:
+    """Pick the best story on a different pillar from the last post and write it.
+
+    Tries the next story when writing fails or breaks the brief's rules.
+    Returns [(story, carousel)], or [] if nothing passes.
+    """
+    fresh = [s for s in stories if not (story_keys(s) & posted_urls)]
     print(f"[selector] {len(fresh)} fresh stories to score (removed {len(stories)-len(fresh)} already posted)")
 
-    # Block off-topic and miracle-cure content
-    _blocklist = [
-        "us politics", "trump", "congress", "senate bill",
-        "nfl", "nba", "premier league", "cricket",
-        "miracle cure", "cures cancer", "detox tea", "weight loss pill",
-        "ozempic", "wegovy", "supplement deal", "discount code",
-    ]
     before = len(fresh)
-    fresh = [s for s in fresh if not any(kw in s.get("headline", "").lower() for kw in _blocklist)]
+    fresh = [s for s in fresh if not any(kw in s.get("headline", "").lower() for kw in _BLOCKLIST)]
     if len(fresh) < before:
-        print(f"[selector] Blocked {before - len(fresh)} irrelevant stories")
+        print(f"[selector] Blocked {before - len(fresh)} stories on the do-not-post list")
 
-    scored = score_stories(fresh)
+    scored = [s for s in score_stories(fresh) if s.get("score", 0) >= 50]
+    rotated = [s for s in scored if s.get("pillar") != last_pillar]
+    if last_pillar:
+        print(f"[selector] Last post was pillar {last_pillar} ({PILLARS.get(last_pillar)}) — skipping it tonight")
 
-    # Pick best Malaysia local + best global as primary picks
-    local = next((s for s in scored if s.get("category") == "malaysia_local"), None)
-    global_ = next((s for s in scored if s.get("category") != "malaysia_local"), None)
-
-    picks = [s for s in [local, global_] if s][:2]
-    if not picks:
-        picks = scored[:2]
-
-    # Build a fallback pool — all scored stories not already in picks
-    pick_urls = {s["url"] for s in picks}
-    fallback_pool = [s for s in scored if s["url"] not in pick_urls]
-
-    results = []
-    for story in picks:
-        print(f"[selector] Writing carousel for: {story['headline'][:60]}... (score: {story.get('score')})")
+    for story in rotated[:5]:
+        print(f"[selector] Writing: {story['headline'][:60]}... "
+              f"(score {story.get('score')}, pillar {story.get('pillar')} {PILLARS[story['pillar']]})")
         try:
-            carousel = write_carousel(story)
-            results.append((story, carousel))
+            return [(story, write_carousel(story))]
         except Exception as e:
-            print(f"[selector] write_carousel failed: {e}")
-            print(f"[selector] Trying next story from fallback pool...")
-            # Try fallback stories one by one until one succeeds
-            for fallback in fallback_pool:
-                if fallback["url"] in {r[0]["url"] for r in results}:
-                    continue
-                print(f"[selector] Fallback: {fallback['headline'][:60]}...")
-                try:
-                    carousel = write_carousel(fallback)
-                    results.append((fallback, carousel))
-                    fallback_pool.remove(fallback)
-                    break
-                except Exception as e2:
-                    print(f"[selector] Fallback also failed: {e2}")
-                    continue
-
-    return results
+            print(f"[selector] Rejected: {e}")
+    return []
 
 
 if __name__ == "__main__":
     import scraper
-    stories = scraper.run()
-    pairs = run(stories, set())
-    for story, carousel in pairs:
+    for story, carousel in run(scraper.run(), set()):
         print(f"\n=== {story['headline']} ===")
         print(f"Cover: {carousel.get('cover_headline')}")
         print(f"Caption preview: {carousel.get('caption','')[:100]}")

@@ -279,7 +279,7 @@ def _gradient_fallback(path: str, slide_index: int):
 
 def generate_slide_images(carousel: dict, output_dir: str, og_image_url: str = "",
                           used_img_urls: set | None = None) -> tuple[list[str], set, list[str]]:
-    """Fetch 10 Pexels photos (or gradient fallback) for the carousel slides.
+    """Fetch a photo (or gradient fallback) for the cover, each inner slide and the closing slide.
 
     Returns (paths, new_used_urls, sources). Sources records whether each slide used
     an article image, Pexels, or the non-photographic gradient fallback.
@@ -304,10 +304,7 @@ def generate_slide_images(carousel: dict, output_dir: str, og_image_url: str = "
             else default_prompt
         )
 
-    queries.append(_DEFAULT_QUERIES[9])
-
-    while len(queries) < 10:
-        queries.append(_DEFAULT_QUERIES[len(queries) % len(_DEFAULT_QUERIES)])
+    queries.append(_DEFAULT_QUERIES[9])   # the closing slide's background
     queries = queries[:10]
 
     new_urls: set = set()
