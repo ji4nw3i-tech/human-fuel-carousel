@@ -1,0 +1,77 @@
+{
+  "story": {
+    "headline": "For decades, we were told to avoid full-fat dairy. New research says otherwise",
+    "summary": "Full-fat dairy may not be the health villain it has long been portrayed as, according to a new study finding that three daily servings did not worsen weight, cholesterol, or insulin resistance over 12 weeks. Researchers also observed improvements in blood pressure and nutrient intake, raising questi",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261105081000.htm",
+    "source": "ScienceDaily Nutrition",
+    "published_at": "2026-11-06T05:51:36+00:00",
+    "category": "global_topic",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "og_image_url": "https://www.sciencedaily.com/images/1920/milk-eggs-butter-cheese-dairy.webp",
+    "score": 74,
+    "score_reason": "Full-fat dairy myth, practical food choice",
+    "pillar": 1,
+    "run_id": "20261106_1342_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "Full-Fat Dairy Was Blamed\nFor Decades.\nNew Research Disagrees.",
+    "cover_image_prompt": "full-fat milk glass",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE STUDY",
+        "headline": "74 adults ate full-fat dairy for **12 weeks**",
+        "insight": "Weight, cholesterol, and insulin resistance did not worsen.",
+        "image_prompt": "plain yogurt bowl"
+      },
+      {
+        "num": 3,
+        "label": "WHAT THEY FOUND",
+        "headline": "Three daily servings — no harmful changes observed",
+        "insight": "Blood pressure and nutrient intake actually improved in dairy group.",
+        "image_prompt": "fresh milk bottle"
+      },
+      {
+        "num": 4,
+        "label": "OLD THINKING",
+        "headline": "Saturated fat in dairy raised one concern: LDL cholesterol",
+        "insight": "That shaped decades of low-fat dairy advice in many countries.",
+        "image_prompt": "cheese wedge wooden board"
+      },
+      {
+        "num": 5,
+        "label": "BIGGER PICTURE",
+        "headline": "Dairy foods may behave differently than saturated fat alone suggests",
+        "insight": "Researchers say the health effects of dairy are more complicated.",
+        "image_prompt": "assorted dairy products market"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Check what dairy you buy — full-fat or low-fat?",
+        "insight": "Read the label. Notice the difference. Talk to your doctor before changing.",
+        "image_prompt": "milk carton label"
+      }
+    ],
+    "sources": [
+      "University of Toronto / Harvey Anderson et al., The Journal of Nutrition, 2026 (reported by ScienceDaily)"
+    ],
+    "caption": "Full-Fat Dairy Was Blamed For Decades. New Research Disagrees.\n\nA Canadian study of 74 adults found that three servings of full-fat dairy daily for 12 weeks did not worsen weight, cholesterol, or insulin resistance — and blood pressure actually improved in that group.\nResearchers say the health effects of dairy may be more complicated than saturated fat alone suggests.\nWhat dairy do you usually buy — full-fat or low-fat, and why?\n\nNot medical advice.\n\nSources: University of Toronto / Harvey Anderson et al., The Journal of Nutrition, 2026 (reported by ScienceDaily)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "Full-Fat Dairy Was Blamed For Decades. New Research Disagrees.\n\nA Canadian study of 74 adults found that three servings of full-fat dairy daily for 12 weeks did not worsen weight, cholesterol, or insulin resistance — and blood pressure actually improved in that group.\nResearchers say the health effects of dairy may be more complicated than saturated fat alone suggests.\nWhat dairy do you usually buy — full-fat or low-fat, and why?\n\nNot medical advice.\n\nSources: University of Toronto / Harvey Anderson et al., The Journal of Nutrition, 2026 (reported by ScienceDaily)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g12cd4527b84ab1f099576e7364af75287a78e8b4e2c0b3b017d63b2ec8d678ade6482e36a854e7997a2975f87044f0ab34108681009aa256984480293750145d_1280.jpg",
+    "https://pixabay.com/get/g384098e8fa8c5840927dec9c0cfb224a69f6876b03e4e6caf13e00fde7f467eaf529b28e285c4cd3bb23bdcdabdf1367219a2ccf08499a7febae8bb946815dbc_1280.jpg",
+    "https://pixabay.com/get/g49adb8c7467860eb23ccbf221115bd49ac01be8ea634d2f12c75da0a2824787e4201d2c2be3c2667385a5cd86fd6009693470f74b3cc2f60c78fbd04392a6226_1280.jpg",
+    "https://pixabay.com/get/g94c175ebd46ec164fb2748677828aaf6b37fe1e6fce38ad28fb70398d38ed070c5394908e40f42cd34edb57cec272d668bf9440f3cc7e8be1d49187fa3689fae_1280.jpg",
+    "https://pixabay.com/get/gcec2ad5f29674c9583bc18342b665e7f54d11d6bb91cd74a7018f828df05ad07e3d1ce0b8596078e166078c14bd1d48381e66f3aca3bb7f1134b94cf76fa03d1_1280.jpg",
+    "https://pixabay.com/get/gd30f947a307d7762ff780c6b51cef48bb381d78e9e03b9ab681e4418ae67368118a2cf7e3644e0c6e9b02fba297455d9e282ce4435d4695af74a5ec5dfa8734b_1280.jpg",
+    "https://pixabay.com/get/gdab9a1c2dc148df4a4ae2f10a7bb4f54099a0c58bdc502b24b2738f2a6fbadd1b8c0c8b44060b7fbe30c0aa4b0d398601f0f40a6df8e654c334d92a81917c200_1280.jpg"
+  ]
+}
