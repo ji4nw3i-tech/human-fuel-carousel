@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "Why are ultra-processed foods linked to heart disease? New clues found in the bloodstream",
+    "summary": "Why are ultra-processed foods linked to heart disease? New clues found in the bloodstream",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPR1E5VElISnFYYndqNUdRTTFNSTlUWGhWZ0ZGU1JNaC1nMTMwWktsTnUtYjBsajF4N05KX0xxVC10U0ctdXNTbk96T2dob0o2bnN3RFRycVRTbm4yVGZrMHZlUW9ObzJuNlNzU0dYSEhBSkNSVW4zZ2k1bVlicFpNTEo3RWVzQTB2OTRwajk4aFJTam05R2hweGdTQzFhcDFrUnVkV0E5Xy10WUVaaWhXcVZtVGJrMl9waUJLSlFB?oc=5",
+    "source": "Earth.com",
+    "published_at": "2026-11-05T14:31:45+00:00",
+    "category": "global_topic",
+    "query": "ultra-processed+food+disease+study",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.earth.com/lifestyle/why-are-ultra-processed-foods-linked-to-heart-disease-new-clues-found-in-the-bloodstream/",
+    "og_image_url": "https://www.earth.com/img/16x9/1920/media-2026/2026/11/05093109/processed-food-heart.jpg",
+    "score": 65,
+    "score_reason": "Ultra-processed foods, credible source, needs local examples",
+    "pillar": 1,
+    "run_id": "20261107_1327_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "Ultra-processed food and heart disease:\nNew clues found\nin the bloodstream",
+    "cover_image_prompt": "ultra-processed packaged food",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE STUDY",
+        "headline": "**6,010** British civil servants were followed over many years",
+        "insight": "None had heart disease or diabetes when they gave blood samples.",
+        "image_prompt": "blood sample tubes laboratory"
+      },
+      {
+        "num": 3,
+        "label": "WHAT THEY FOUND",
+        "headline": "A blood pattern was linked to ultra-processed food consumption",
+        "insight": "It accounted for about half the link to cardiovascular disease.",
+        "image_prompt": "fresh fruit vegetables market"
+      },
+      {
+        "num": 4,
+        "label": "BEYOND INGREDIENTS",
+        "headline": "Sugar, salt and fat may not be the whole story",
+        "insight": "Researchers suggest how food is made may also matter.",
+        "image_prompt": "packaged snack food shelf"
+      },
+      {
+        "num": 5,
+        "label": "THE SPLIT",
+        "headline": "Only **18%** of daily intake was ultra-processed, by weight",
+        "insight": "Minimally processed food — fruit, vegetables, grains — made up about 62%.",
+        "image_prompt": "wet market vegetables grains"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Swap a packaged snack for a minimally processed option",
+        "insight": "Fruit, plain water, unsweetened tea or nuts all count.",
+        "image_prompt": "glass water fresh fruit"
+      }
+    ],
+    "sources": [
+      "Whitehall II study / University College London and Imperial College London, 2026 (reported by Earth.com)"
+    ],
+    "caption": "Ultra-processed food and heart disease: new clues found in the bloodstream\n\nA study of 6,010 British civil servants found a blood pattern linked to ultra-processed food diets — accounting for about half the association with cardiovascular disease. Researchers say processing itself may play a role, beyond just sugar, salt and saturated fat. More research is needed before any firm conclusions can be drawn. Does this change how you think about packaged foods at home?\n\nNot medical advice.\n\nSources: Whitehall II study / University College London and Imperial College London, 2026 (reported by Earth.com)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "Ultra-processed food and heart disease: new clues found in the bloodstream\n\nA study of 6,010 British civil servants found a blood pattern linked to ultra-processed food diets — accounting for about half the association with cardiovascular disease. Researchers say processing itself may play a role, beyond just sugar, salt and saturated fat. More research is needed before any firm conclusions can be drawn. Does this change how you think about packaged foods at home?\n\nNot medical advice.\n\nSources: Whitehall II study / University College London and Imperial College London, 2026 (reported by Earth.com)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g1168a8e43d1166132d82a8fbcc044b6385411b7f4b28e82b85303d964d2e75bc7b0bdb45709cccb1aab972c8bfd12d7f7d1bcc25de9afde56ef7e4bf9876e07a_1280.jpg",
+    "https://pixabay.com/get/g2bebf117885aeded8173291d804edc54cded1fb4f41398e9cab6e80dd23af794ce4cbb0eb7851d2915648f854fb055912b6dc8ac6d69cfb2b662261c6ecc46df_1280.jpg",
+    "https://pixabay.com/get/g5f0ac6837a30aea8a4a759a83157d757fd74c31b14f928b4792fd6cca09ab33e5bbd9494fe5cf95d51300ae4afeda25c1182a86062d52e6718d617e2b326670f_1280.jpg",
+    "https://pixabay.com/get/g7569feced8d094d1bd563cb11907fe607ec3df353f5d4290fa0a2b46159f5b6a588c07b6079db8339988de516e2ac70e29d9f87c86bb85ea8954917f3a57a93b_1280.jpg",
+    "https://pixabay.com/get/g77bb5c003fcd7cb38c616ddb9831a632ae7d6b55a47632f27d3045ca517fabf2b76434f055ccd1fd1e5cdd988c2046d4d6a9c225cce3f9a6db37518d51939cab_1280.jpg",
+    "https://pixabay.com/get/g880d5eedc194a2bbce2c7f3a6e40f0212e64b0ecffb53f8cd5e3f9299caa61520afb6c67b85cb9327a22e260573c1e8754be43790043dcb339e5ae8fd45a1544_1280.jpg",
+    "https://pixabay.com/get/gdb403980a21f1a96ce3e3903240e95702807767791e92d37fc03192fe79512289c35dd7cd4b3c58c2b5f90cec51e630d5eb9d9ddff6bedbb40d0ddd3dea9eab3_1280.jpg"
+  ]
+}
