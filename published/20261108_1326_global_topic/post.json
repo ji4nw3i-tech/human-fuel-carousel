@@ -1,0 +1,77 @@
+{
+  "story": {
+    "headline": "Drinking 2–3 cups of coffee a day linked to dramatically lower dementia risk",
+    "summary": "Drinking two to three cups of caffeinated coffee daily was linked to a dramatically lower risk of dementia and better cognitive functioning in a study spanning up to 43 years. The benefits appeared regardless of genetic risk, but decaffeinated coffee did not show the same association.",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261105224550.htm",
+    "source": "ScienceDaily Nutrition",
+    "published_at": "2026-11-07T10:16:19+00:00",
+    "category": "global_topic",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "og_image_url": "https://www.sciencedaily.com/images/1920/happy-elderly-man-coffee.webp",
+    "score": 70,
+    "score_reason": "Coffee & dementia credible, universal but no local",
+    "pillar": 1,
+    "run_id": "20261108_1326_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "2–3 Cups of Coffee a Day\nLinked to Much Lower\nDementia Risk",
+    "cover_image_prompt": "coffee cups morning table",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE STUDY",
+        "headline": "U.S. adults tracked for up to 43 years",
+        "insight": "Researchers linked daily caffeinated coffee to lower dementia rates over decades.",
+        "image_prompt": "coffee beans wooden surface"
+      },
+      {
+        "num": 3,
+        "label": "THE NUMBER",
+        "headline": "**141** vs 330 dementia cases per 100,000 people yearly",
+        "insight": "Higher coffee drinkers showed far fewer dementia cases than those who rarely drank it.",
+        "image_prompt": "brewed coffee cup"
+      },
+      {
+        "num": 4,
+        "label": "COGNITIVE HEALTH",
+        "headline": "7.8% vs 9.5% reported memory or thinking decline",
+        "insight": "Adults drinking more caffeinated coffee were less likely to notice cognitive decline themselves.",
+        "image_prompt": "notebook pen morning coffee"
+      },
+      {
+        "num": 5,
+        "label": "WHAT TO KNOW",
+        "headline": "Decaf showed no same link — caffeine may matter",
+        "insight": "Tea was also linked to better cognitive outcomes. This is association, not proven cause.",
+        "image_prompt": "tea and coffee side by side"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Swap one sugary drink for plain caffeinated coffee or tea",
+        "insight": "No added sugar. See how your morning focus feels after a few days.",
+        "image_prompt": "plain black coffee glass"
+      }
+    ],
+    "sources": [
+      "Study of U.S. adults, 2026 (reported by ScienceDaily Nutrition)"
+    ],
+    "caption": "2–3 cups of caffeinated coffee a day was linked to much lower dementia risk in a long-running U.S. study.\n\nResearchers tracked adults for up to 43 years and found 141 dementia cases per 100,000 yearly among higher coffee drinkers, versus 330 among those who rarely drank it. Decaf did not show the same link. Tea was also associated with better cognitive outcomes. This is an association study — other lifestyle factors may also play a role. Could your daily kopi be doing more than you thought?\n\nNot medical advice.\n\nSources: Study of U.S. adults, 2026 (ScienceDaily Nutrition)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "2–3 cups of caffeinated coffee a day was linked to much lower dementia risk in a long-running U.S. study.\n\nResearchers tracked adults for up to 43 years and found 141 dementia cases per 100,000 yearly among higher coffee drinkers, versus 330 among those who rarely drank it. Decaf did not show the same link. Tea was also associated with better cognitive outcomes. This is an association study — other lifestyle factors may also play a role. Could your daily kopi be doing more than you thought?\n\nNot medical advice.\n\nSources: Study of U.S. adults, 2026 (ScienceDaily Nutrition)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g0ea8f4490453dda0cceceea9ddee4e554b5d4ee789cbc872da8a14e637b5b82e1886b959ee73c348318b141bef4952204daca71967824adee3a9ca9e65471d7c_1280.jpg",
+    "https://pixabay.com/get/g524dc214e08c0f4250dde0d2fd2fd6621ca43a4793adc37ae14435f3276210d42cf6456ac85d546d700d807e55a2e31cf09f3ec0a31faa5b95529ba7d53cc260_1280.jpg",
+    "https://pixabay.com/get/g59f7d2a733fe5967573d56ea772d9ce85fb175494e4809ab531e5ba88bbee405fe8eca1ad5e15dfdc664db47ab98bdd1130edb776f201343d716a9f7a14eac72_1280.jpg",
+    "https://pixabay.com/get/g6b0cce637724ace06df0a071f3435aa5f551adaf2358cb1618c410fe2ba101054343ef46dfdc1a591bf87337a9f928ba38ad4346cd4d9f15530e5232c42d4ada_1280.jpg",
+    "https://pixabay.com/get/gcfd132afe16bb5fda634c5fe3a8386adbba813c8897c8dc1e8de177293ba41fc83291f9cb48297b049358dc60a0bb5b19d92f2e826ec4fed1e3ac784bfe93693_1280.jpg",
+    "https://pixabay.com/get/gdf5f866aa607cb5bce1f0cd2e6939855500b2cf3569c8354fa08511522ad24fee4b380c8e438b11fcf4eb4fdb12deba577567cc84d7cf6d402f5a86fa52a2a4e_1280.jpg",
+    "https://pixabay.com/get/gf442508054b238410abaed68a023e87122b618a7f9ca86af3e400750cf84c98415b758f14cb434c6450850141b00056943f1add2da31f82015bb0445c6037b3a_1280.jpg"
+  ]
+}
