@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "Scientists Identified 10 Healthy Diets Linked to Slower Biological Aging",
+    "summary": "Scientists Identified 10 Healthy Diets Linked to Slower Biological Aging",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNemxpM2kxT0pWN3dxc0EwLUFsaTR4LXF5R3ZkVjVhaWNlTXNOSVp0VWFCemJibmhTZUs4dlI4LU5mOUdKZFkwNFdGN0Nta3daUTI4LW9XYjdrdUk1aUIyTHZuQV84NmlnMXBEWGVNYkUyd0pzSzhvdlotYWRybjhpMjU3RW9JR1RDeG1pRVRCNXd6UzBXUWJCRjRiSzJMUUFLbUxZ?oc=5",
+    "source": "ScienceAlert",
+    "published_at": "2026-11-08T02:04:14+00:00",
+    "category": "global_topic",
+    "query": "WHO+healthy+diet",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.sciencealert.com/scientists-identified-10-healthy-diets-linked-to-slower-biological-aging",
+    "og_image_url": "https://www.sciencealert.com/images/2026/11/HealthyDiet-1200x675.jpg",
+    "score": 55,
+    "score_reason": "Health study credible, but global, no Malaysia data",
+    "pillar": 1,
+    "run_id": "20261109_1346_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "10 Diets Linked to\nSlower Biological Aging —\nAny One May Help",
+    "cover_image_prompt": "fresh vegetables colorful produce",
+    "slides": [
+      {
+        "num": 2,
+        "label": "WHAT IS THIS",
+        "headline": "Biological age is how fast your body is wearing out",
+        "insight": "It does not always match the age on your IC.",
+        "image_prompt": "leafy greens market"
+      },
+      {
+        "num": 3,
+        "label": "THE STUDY",
+        "headline": "Researchers studied **6,470 people** aged 30 and over",
+        "insight": "All 10 diets were linked to slower biological aging.",
+        "image_prompt": "mixed vegetables bowl"
+      },
+      {
+        "num": 4,
+        "label": "WHY IT MATTERS",
+        "headline": "Slower aging is linked to lower risk of dementia and cardiovascular disorders",
+        "insight": "\"Effects are measurable and relevant for prevention,\" say researchers.",
+        "image_prompt": "fruit vegetables wet market"
+      },
+      {
+        "num": 5,
+        "label": "GOOD NEWS",
+        "headline": "You do not need to follow all 10 diets at once",
+        "insight": "Sticking to even one was associated with slower biological aging.",
+        "image_prompt": "vegetables herbs tropical"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Pick one meal today and add more vegetables and less sugar",
+        "insight": "Small, consistent swaps are what the research points to.",
+        "image_prompt": "rice vegetables simple meal"
+      }
+    ],
+    "sources": [
+      "German Centre for Neurodegenerative Diseases (DZNE), published in Nature Communications (reported by ScienceAlert, 2026)"
+    ],
+    "caption": "10 diets have been linked to slower biological aging — and you only need to start with one.\n\nResearchers from DZNE studied 6,470 people aged 30 and over and found that healthier eating was associated with slower biological aging across all 10 diet patterns.\n\nBiological aging affects the risk of dementia and cardiovascular disorders, and researchers say even measurable differences matter for prevention.\n\nWhich meal in your day do you think is easiest to make healthier?\n\nNot medical advice.\n\nSources: German Centre for Neurodegenerative Diseases (DZNE), Nature Communications (reported by ScienceAlert, 2026)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "10 diets have been linked to slower biological aging — and you only need to start with one.\n\nResearchers from DZNE studied 6,470 people aged 30 and over and found that healthier eating was associated with slower biological aging across all 10 diet patterns.\n\nBiological aging affects the risk of dementia and cardiovascular disorders, and researchers say even measurable differences matter for prevention.\n\nWhich meal in your day do you think is easiest to make healthier?\n\nNot medical advice.\n\nSources: German Centre for Neurodegenerative Diseases (DZNE), Nature Communications (reported by ScienceAlert, 2026)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g24c4bac977fe05962010c9b397bad9d733ce27f38ef5af30563975c812b2883f81a882a4ea3954cb731228014d4426aae8ae9b747cab4d20fed5f6a5e7fa6ab4_1280.jpg",
+    "https://pixabay.com/get/g40b13c391c3743be6fd92ff2fe781f284ef40209f6ac0fa0b66f961fd6be73ddd3fdd3448be243214d5522e9da6a564987df4da013ede2ab35da716ce7e88bdc_1280.jpg",
+    "https://pixabay.com/get/g5a6cb0a293d971eab737b744f5cc3f71c1d41423024150059037ba6ac7a156066f61f0cfb6381b3cfb7e2037fcc18fd479a6aa18737c733f88bbf181e37b3cfc_1280.jpg",
+    "https://pixabay.com/get/g8fb9925e3ef381d00af30bef6ee91438a47fcd80e8b5b4873dd97440f9141994b2aa76d53545f29ef0124081e64f227b9bfa08b3abd0b292330cbaa718a5320d_1280.jpg",
+    "https://pixabay.com/get/g9d147058518f9be031dcffa328b1cd3a0c36eba386b2bd06839cc54892d187e9562837070a4a731e3bea59a6578efdda63dfbf1d5cd3f332c05423bbc769613e_1280.jpg",
+    "https://pixabay.com/get/gb79c1afdece68861ac2624ed187a799e756050a2c8da29b43a1d92c9572ad4163179e4122ef7b6ecd4878b8a5f7dff0934a833313892d1bb12601f120ac7ce20_1280.jpg",
+    "https://pixabay.com/get/gd87a4ce3b2551715b239831ad44180fe52e6f986e81b69399393b4992a45ee4397a2bc9b3f05d1b51532980e983a9009796521f1e66cea0e907a112a4e8816a8_1280.png"
+  ]
+}
