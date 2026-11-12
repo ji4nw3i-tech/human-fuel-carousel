@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "Low-Calorie Diet Puts 54% of Young Adults Into Type 2 Diabetes Remission",
+    "summary": "Low-Calorie Diet Puts 54% of Young Adults Into Type 2 Diabetes Remission",
+    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNb1l3MktMNkF2aG92TWIySS04U0k5MnRFcXB0RVkxN3JtOGdDbEJCSV9uUFd2ZE8xeHFlVHV6OUZHOXFPMmdGY1NXNUlpQUN0eld3bnFQM0J2a0xNcFJnZmxfcEQzOW9jeVJPOURQZWRub1dlM0hFTHVfT2NvZzRlYzdVa3NSLUJ5VGJDTGJyY1FoZ0RnSVdUMERXaGpCOTJTSkhUMHhYRUtINkNJaTA1OXV5ODVOcjh5TFhxVHl5R1dVUlBMX0VHbEZOVQ?oc=5",
+    "source": "Global Agriculture",
+    "published_at": "2026-11-12T10:27:08+00:00",
+    "category": "global_topic",
+    "query": "type+2+diabetes+remission+diet",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.global-agriculture.com/food-nutrition-wellness/low-calorie-diet-puts-54-of-young-adults-into-type-2-diabetes-remission/",
+    "og_image_url": "https://www.global-agriculture.com/wp-content/uploads/2026/11/Low-Calorie-Diet-Puts-54-of-Young-Adults-Into-Type-2-Diabetes-Remission.jpg",
+    "score": 72,
+    "score_reason": "Diet-health link credible, not Malaysia-specific",
+    "pillar": 1,
+    "run_id": "20261112_1346_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "A Diet Change Put\n54% of Young Adults\nInto Diabetes Remission.",
+    "cover_image_prompt": "fresh vegetables plate",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE STUDY",
+        "headline": "96 young adults with type 2 diabetes joined a strict trial.",
+        "insight": "Half followed a low-calorie diet and exercise. Half received standard care.",
+        "image_prompt": "leafy greens market"
+      },
+      {
+        "num": 3,
+        "label": "THE RESULT",
+        "headline": "**54%** in the diet group reached remission after 24 weeks.",
+        "insight": "In the standard care group, only about 4% reached remission.",
+        "image_prompt": "vegetable farm rows"
+      },
+      {
+        "num": 4,
+        "label": "HOW THEY DID IT",
+        "headline": "800–900 calories daily, plus protein, fruit and vegetables.",
+        "insight": "Supervised exercise twice a week was also part of the programme.",
+        "image_prompt": "fresh fruit vegetables"
+      },
+      {
+        "num": 5,
+        "label": "WHAT REMISSION MEANS",
+        "headline": "Remission meant normal blood sugar, no glucose-lowering medication.",
+        "insight": "Measured at 24 weeks; long-term outcomes need further research.",
+        "image_prompt": "natural whole foods"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Add one portion of fruit and two of non-starchy vegetables daily.",
+        "insight": "Small, consistent food changes are where real health shifts begin.",
+        "image_prompt": "glass water vegetables"
+      }
+    ],
+    "sources": [
+      "RESET for Remission randomized trial, McGill University and University of Leicester, 2026 (reported by Global Agriculture, published in The Lancet Regional Health, Americas, presented at European Association for the Study of Diabetes annual meeting)"
+    ],
+    "caption": "A diet change put 54% of young adults into diabetes remission.\n\nA supervised low-calorie diet and exercise programme put more than half of 96 young adults (aged 18–45) with early-onset type 2 diabetes into remission after 24 weeks, compared with about 4% who received standard care — according to the RESET for Remission trial run in Canada and the UK.\n\nThis was a structured clinical trial, not a quick fix. But it shows that food and movement are powerful. What would it take for your family to eat one more portion of vegetables today?\n\nNot medical advice.\n\nSources: RESET for Remission trial, McGill University and University of Leicester, 2026 (The Lancet Regional Health, Americas; reported by Global Agriculture)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "A diet change put 54% of young adults into diabetes remission.\n\nA supervised low-calorie diet and exercise programme put more than half of 96 young adults (aged 18–45) with early-onset type 2 diabetes into remission after 24 weeks, compared with about 4% who received standard care — according to the RESET for Remission trial run in Canada and the UK.\n\nThis was a structured clinical trial, not a quick fix. But it shows that food and movement are powerful. What would it take for your family to eat one more portion of vegetables today?\n\nNot medical advice.\n\nSources: RESET for Remission trial, McGill University and University of Leicester, 2026 (The Lancet Regional Health, Americas; reported by Global Agriculture)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g084e25227344d6e39f50d10ae97e808ab6ba13e116a753a06c06d2a6a12306c59eac309337cf2db11e20ceaf087271f7d0adf0cb78833700f0c3b819dea85746_1280.jpg",
+    "https://pixabay.com/get/g69bc7417674453afb91cbc03e94af2a183608e16f6f6ee3aad40568a39067492c972905b6c3a0b57d1a907d25bd6168a530a7428fcd6b0a0ee2e11913bbf5540_1280.jpg",
+    "https://pixabay.com/get/g8598e62c1f6aeb841d498a61a4909e364e76dd0de7df69fb94bf59b1fc8058efe444302a93c74f191424dfae70b488788b51fbb0a144a284dc9261f1073d2e56_1280.jpg",
+    "https://pixabay.com/get/g9f62844f05ee10f91636e838662923346b8d8a2f4c826da4146d75224ab298f5b42e201b0ce4a259d9aa0d01eb252e4edda31aa5b217f2e3512a1ba2f2a1586b_1280.jpg",
+    "https://pixabay.com/get/gdc875238fc46b8cacb3052a50cebedab34bb50b4d07ee1c8271d89eb33a2ee4dd242520858e3226a6d2a3ae6132dcdd7f12fbba0bf5bad2c3b943827a864f852_1280.jpg",
+    "https://pixabay.com/get/gf24c3cb6b4c51efc2d9443e3bc802952ec1afe668bcba6aa46833a83b202cd6c5bf6856b4469a7438b9a4796be85bee66da7c08a3c668865deb1cf732327710c_1280.jpg",
+    "https://pixabay.com/get/gf7d6aa7d910dbccf38518ecdb5f5d5d1e680ab21418463cd9d07cd9385021295041bdc9a7d85fe58d21012b1a352c0a096a89566e62e6c7f4880ccc9c06bf57d_1280.jpg"
+  ]
+}
