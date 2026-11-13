@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "How ultra-processed foods hurt your brain",
+    "summary": "How ultra-processed foods hurt your brain",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQSWRvcS1LTEVDblZOUml4ODhQU21qWHBYaGY0UWpjT3NqTnVDLWFWWUpnQ09WTldQMlQ1Q1hyNWJrczU4SWZ2LTRqUzZDQmpzU2RKSzZhS0U3eXIzcl9HSlJKQWNVNExmNnBCemY3TGRxazA1LTRmTktlT2ZlOU1iZmtReWsxS2lYclVialBrZ3RRd2RlRE5nRThKbGs?oc=5",
+    "source": "The Standard (HK)",
+    "published_at": "2026-11-13T04:00:44+00:00",
+    "category": "global_topic",
+    "query": "ultra-processed+food+disease+study",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.thestandard.com.hk/wellness/article/345716/How-ultra-processed-foods-hurt-your-brain",
+    "og_image_url": "https://image.hkstandard.com.hk/f/1200p0/0x0/100/none/436c23a353117f2d778ddb476a460da1/2026-10/adrian-infernus-77eaFI4BV5o-unsplash.jpg",
+    "score": 61,
+    "score_reason": "Brain health relevant, HK source not local",
+    "pillar": 1,
+    "run_id": "20261113_1343_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 1,
+    "cover_headline": "Eating Ultra-Processed Food Daily\nMay Be Linked to Early\nParkinson's Signs",
+    "cover_image_prompt": "sugary drinks packaged snacks",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE STUDY",
+        "headline": "42,853 people tracked for up to 26 years",
+        "insight": "Researchers tracked diet and early Parkinson's signs over decades.",
+        "image_prompt": "research journal open page"
+      },
+      {
+        "num": 3,
+        "label": "THE FINDING",
+        "headline": "High intake group had **2.5 times** the risk of early Parkinson's signs",
+        "insight": "\"High\" meant 11 or more servings of ultra-processed food per day.",
+        "image_prompt": "potato chips soda cans packaged snacks"
+      },
+      {
+        "num": 4,
+        "label": "EVEN A LITTLE",
+        "headline": "Even low intake: packaged candy linked to 60% higher risk",
+        "insight": "Sauces and condiments were linked to 17% higher risk in the low-intake group.",
+        "image_prompt": "packaged candy condiment bottles"
+      },
+      {
+        "num": 5,
+        "label": "WHY IT MATTERS",
+        "headline": "Additives may promote oxidative stress in the brain",
+        "insight": "Free radicals may damage dopamine-producing neurons, researchers suggest.",
+        "image_prompt": "fresh whole foods wet market vegetables"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Swap one packaged snack for a whole food instead",
+        "insight": "Fresh fruit, boiled egg, or plain nuts — real food, fewer additives.",
+        "image_prompt": "fresh fruit whole nuts bowl"
+      }
+    ],
+    "sources": [
+      "Neurology (journal), study reported by The Standard (HK), 2026"
+    ],
+    "caption": "Eating ultra-processed food daily may be linked to early Parkinson's signs.\n\nA study in Neurology followed 42,853 people for up to 26 years. Those eating 11 or more servings of ultra-processed food daily were associated with 2.5 times the risk of early Parkinson's signs compared to low-intake groups. Even small amounts of packaged candy were linked to 60% higher risk in the low-intake group.\n\nWhat is one packaged food your family reaches for most often?\n\nNot medical advice.\n\nSources: Neurology journal, 2026 (reported by The Standard HK)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "FOOD & HEALTH",
+    "cover_subheadline": ""
+  },
+  "caption": "Eating ultra-processed food daily may be linked to early Parkinson's signs.\n\nA study in Neurology followed 42,853 people for up to 26 years. Those eating 11 or more servings of ultra-processed food daily were associated with 2.5 times the risk of early Parkinson's signs compared to low-intake groups. Even small amounts of packaged candy were linked to 60% higher risk in the low-intake group.\n\nWhat is one packaged food your family reaches for most often?\n\nNot medical advice.\n\nSources: Neurology journal, 2026 (reported by The Standard HK)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g0862c43d681f85579d296bea3b54589127f0bf60e45d2eaf0b88ac8a0e92a5b9e3b6cf91f4c696b71bebd515a2ac7ea27ebbb1d10d9612221c5ba5f51fbe618b_1280.jpg",
+    "https://pixabay.com/get/g3b3fb1cea579c1bffbe8bf163ca6f997d9b5a23b60a0396b7dd62e0c770ad01ac5257d0a072cfd382aa7ca164f83d0dc_1280.jpg",
+    "https://pixabay.com/get/g4ab1f4ab3744447e248a5bb4a7c8065b36c8012b6a2ec6f193e1e733c2c7bcf2ea4fc045c6e2d5719a656ab324f6c07671c8caa35afd335c5a29f8668acae452_1280.jpg",
+    "https://pixabay.com/get/ga1157c059007c56316e6e6222b958603918190d88b0fb1f8f5b82d58b0d58aab4b6283d04ea0bd06b3beb7eb1af5070c1daebca53d4601bd55e347ef887daaad_1280.jpg",
+    "https://pixabay.com/get/gb36add89f2875d87ce6261d61179648802dd2ed8282dd46d3cb62c1b36e2c01f64f5507de701e5541a718c9f0222e424_1280.jpg",
+    "https://pixabay.com/get/gc32de82fb8444ec5fc1fee097f4396c9dcd4d139b30f2cb7c73afc37c86da58f72d78922c8343f43f1df93d7176fa9ef4175a8c7b57a0dfe54aa622c40eec278_1280.jpg",
+    "https://pixabay.com/get/gf9579961af1aee1087bb76b042c86b52f0c2586c6dc309ddcabfd55b6e99b80e960520903174658f6cb7b770dd608be72bcdaa7373b6b556bc0d7acbb4d4dec8_1280.jpg"
+  ]
+}
