@@ -1,0 +1,81 @@
+{
+  "story": {
+    "headline": "What makes food ‘organic’? For many consumers, the answer isn’t always on the label",
+    "summary": "What makes food ‘organic’? For many consumers, the answer isn’t always on the label",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPaUdkX1Nna3MtMjlJSFRnWElvb1M1WGQyV0M2OEVzUjMyNWpoVzFCd2FxNUZ2QkVBQUVSY1ZnLUZnMnJsWTdjWjJSYll2ZVEtODNzUjhqa0s1MXV2UXFXWlVrdTh5SGYxUE1waEFUS2UyREVVam9pVUM1cHZzMnZoM1VpdlNxeGpYNGE2cTYxdGJmTDdzYThaLWRlUzYzZExhbzNRWXludTRkYzlySmNtOUp0Yw?oc=5",
+    "source": "The Conversation",
+    "published_at": "2026-11-15T17:27:08+00:00",
+    "category": "global_topic",
+    "query": "organic+food+health+study",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://theconversation.com/what-makes-food-organic-for-many-consumers-the-answer-isnt-always-on-the-label-293818",
+    "og_image_url": "https://images.theconversation.com/files/770193/original/file-20261105-64-qblaw0.jpg?ixlib=rb-4.1.1&rect=0%2C649%2C8000%2C4000&q=45&auto=format&w=1356&h=668&fit=crop",
+    "score": 72,
+    "score_reason": "Organic standards explained, weak local angle",
+    "pillar": 2,
+    "run_id": "20261117_1345_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 2,
+    "cover_headline": "What Does 'Organic'\nActually Mean?\nIt Depends Who You Ask.",
+    "cover_image_prompt": "supermarket vegetables",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE RESEARCH",
+        "headline": "33 consumers filmed their own food to explain organic",
+        "insight": "New Zealand study; videos revealed habits that surveys alone miss.",
+        "image_prompt": "vegetable garden balcony"
+      },
+      {
+        "num": 3,
+        "label": "WHAT THEY FOUND",
+        "headline": "Shoppers define organic by trust, not just the label",
+        "insight": "Taste, quality, environment and safety all shaped their choices.",
+        "image_prompt": "fresh market produce"
+      },
+      {
+        "num": 4,
+        "label": "THE NUMBER",
+        "headline": "New Zealand's organic sector was worth **NZ$1.18 billion** in 2024",
+        "insight": "Around three-quarters of survey respondents still bought organic food or drink.",
+        "image_prompt": "organic vegetables market"
+      },
+      {
+        "num": 5,
+        "label": "SOIL FIRST",
+        "headline": "Organic farming is understood as supporting soils, ecosystems and people",
+        "insight": "Certification tracks this standard across the full supply chain.",
+        "image_prompt": "healthy soil compost"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Grow one thing at home — even bean sprouts in a jar",
+        "insight": "One study participant grew sprouts and balcony greens after asking the same question.",
+        "image_prompt": "bean sprouts jar"
+      }
+    ],
+    "sources": [
+      "Organics Aotearoa New Zealand, 2025 market report (reported by The Conversation, 2026)",
+      "New Zealand government-led consumer survey, 2020 (reported by The Conversation, 2026)",
+      "Researcher study, 33 Chinese consumers of organic food in New Zealand (reported by The Conversation, 2026)"
+    ],
+    "caption": "What does 'organic' actually mean? It depends who you ask.\n\nA New Zealand researcher asked 33 Chinese consumers to film their own food — and found that trust matters more than labels.\nOrganic agriculture is broadly understood as supporting soils, ecosystems and people, but shoppers arrive at that idea in very different ways.\nDo you look for an organic label when you shop, or do you go by something else?\n\nSources: Organics Aotearoa New Zealand, 2025 market report; New Zealand government consumer survey, 2020; researcher study on 33 Chinese consumers in New Zealand — all reported by The Conversation, 2026\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "NATURAL FARMING",
+    "cover_subheadline": ""
+  },
+  "caption": "What does 'organic' actually mean? It depends who you ask.\n\nA New Zealand researcher asked 33 Chinese consumers to film their own food — and found that trust matters more than labels.\nOrganic agriculture is broadly understood as supporting soils, ecosystems and people, but shoppers arrive at that idea in very different ways.\nDo you look for an organic label when you shop, or do you go by something else?\n\nSources: Organics Aotearoa New Zealand, 2025 market report; New Zealand government consumer survey, 2020; researcher study on 33 Chinese consumers in New Zealand — all reported by The Conversation, 2026\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g3d4a4a19f0fc523f030df44dd7c2df1e49a164b18b633ac63c5ff4018cab904d889b2be7924be8a77e0ade9b6388b3a958b898fb3867617ab47748024b503bb2_1280.jpg",
+    "https://pixabay.com/get/g54b512578f25fce8e3bb62310a82428674ee2c418ee4e9b62b73441eebd28cccb6fa09bc32862504cc98914781407c57df6d77fc1d9affcf0011316bc1b7e930_1280.jpg",
+    "https://pixabay.com/get/g8c8c566f588963d1d6437f95d8646a6b80489c4f50ef72ca7b1a33ce17d81caea2cb7c201b77f91e83fe974c496f796f29dc322253e9661a4708baf32ff59465_1280.jpg",
+    "https://pixabay.com/get/g9855abe94a1618ce267c55db9c8dd75e12786b56bf34ba3979bed8ff3e0bcf0982a32ef2cdb2a6dac8f1846920c432483df4b99fa51ff6fab3079efe0b232df1_1280.jpg",
+    "https://pixabay.com/get/gbab181b7e187537baa32cf6a942ea69b460ddcbd6c39fcb4ad8330485b34f3a75967c282a28a3180df4f04df018d65307979f55953fff566c161eb8b3eceb949_1280.jpg",
+    "https://pixabay.com/get/gc3c84c2ab0223e40a3dcd051843c848228f864da57ddd61817c4e19641e42d353a77e401e910248794b8ebd9c352bef7c67500712eddd13c1af155dea4ce64c2_1280.jpg",
+    "https://pixabay.com/get/gd042ab4b15347a689076012f927b15d55ab647d963e008d46c9928a27462cabd15231dc5f045ab227498e75340e7904b48fba11196878659ee43108bc91f37c5_1280.jpg"
+  ]
+}
