@@ -1,0 +1,79 @@
+{
+  "story": {
+    "headline": "Bringing regenerative agriculture into the greenhouse",
+    "summary": "Bringing regenerative agriculture into the greenhouse",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPX1pIc2kxVDdyR3NjU25tUm5GanR5a3B5dVp0UWZfYTdzSnJVODA4b1hKVUQyM194OWVVZWpSSXdISVhMdENUYUFralRzVThXckFKUWJCcGtJMjgtbmtPZHBYUjctaEVjMFBGTThiNFExRGxTRjltTXNxSXAtV2FFakdiaElXbEZkSUVEY1hwdHBVOTlLTGVLOTZ2a2ROUQ?oc=5",
+    "source": "Hortidaily",
+    "published_at": "2026-11-19T12:50:07+00:00",
+    "category": "global_topic",
+    "query": "regenerative+agriculture",
+    "hn_score": 0,
+    "reddit_score": 0,
+    "gh_stars": 0,
+    "article_url": "https://www.hortidaily.com/article/9894578/bringing-regenerative-agriculture-into-the-greenhouse/",
+    "og_image_url": "https://www.hortidaily.com/remote/https/agfstorage.blob.core.windows.net/misc/HD_com/2026/11/19/LC.jpg?preset=OgImage",
+    "score": 62,
+    "score_reason": "Regenerative farming credible, weak Malaysia relevance",
+    "pillar": 2,
+    "run_id": "20261119_1348_global_topic",
+    "instagram_username": "thehumanfuel.farmacy"
+  },
+  "carousel": {
+    "pillar": 2,
+    "cover_headline": "Regenerative Growing:\nNot Changing Everything\nOvernight",
+    "cover_image_prompt": "greenhouse vegetable plants",
+    "slides": [
+      {
+        "num": 2,
+        "label": "THE IDEA",
+        "headline": "Healthy plants start with a healthy growing environment",
+        "insight": "Regenerative growing focuses on the whole ecosystem, not just individual problems.",
+        "image_prompt": "vegetable farm soil"
+      },
+      {
+        "num": 3,
+        "label": "THE SHIFT",
+        "headline": "Less reacting, more preventing — that is the difference",
+        "insight": "IPM uses monitoring and prevention before pest pressure becomes a bigger problem.",
+        "image_prompt": "leafy green plants"
+      },
+      {
+        "num": 4,
+        "label": "THE BALANCE",
+        "headline": "Crop quality and **conscious** inputs can work together",
+        "insight": "Growers examine ingredients, timing and effects on beneficial organisms before applying anything.",
+        "image_prompt": "fresh vegetables market"
+      },
+      {
+        "num": 5,
+        "label": "IN PRACTICE",
+        "headline": "Small, conscious decisions build long-term farm resilience",
+        "insight": "Biodiversity and soil health are goals, but solutions must fit existing production systems.",
+        "image_prompt": "vegetable seedlings trays"
+      },
+      {
+        "num": 6,
+        "label": "TRY THIS WEEK",
+        "headline": "Observe your plants before reaching for any spray",
+        "insight": "Check leaves, stems and soil first. Catching problems early is the first step.",
+        "image_prompt": "potted herbs balcony"
+      }
+    ],
+    "sources": [
+      "Lost Coast Plant Therapy, 2026 (reported by Hortidaily)"
+    ],
+    "caption": "Regenerative growing: not changing everything overnight.\n\nIt starts with understanding the whole ecosystem — soil, biodiversity, and what goes into your growing environment.\nFor home gardeners, the same idea applies: observe first, intervene mindfully.\nAre you already doing any kind of natural pest management at home?\n\nSources: Lost Coast Plant Therapy, 2026 (Hortidaily)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+    "cover_badge": "NATURAL FARMING",
+    "cover_subheadline": ""
+  },
+  "caption": "Regenerative growing: not changing everything overnight.\n\nIt starts with understanding the whole ecosystem — soil, biodiversity, and what goes into your growing environment.\nFor home gardeners, the same idea applies: observe first, intervene mindfully.\nAre you already doing any kind of natural pest management at home?\n\nSources: Lost Coast Plant Therapy, 2026 (Hortidaily)\n\n#thehumanfuel #farmacy #naturalfarming #eatrealfood #malaysia",
+  "new_img_urls": [
+    "https://pixabay.com/get/g1e242c0e0a0cbcc2b929a068fc0ec06eb4a16f89baf82b7edf0457e1815ba5a818a11bd97cd141eb3f772e0122d7cca75ff14f6719f3b0518484a638fc0c7ebb_1280.jpg",
+    "https://pixabay.com/get/g75dd97990e02a14ac6827e2c5db70472a8ea2ff77e40984b484c862cbc800205150e7f04f26b8b4c2aaa71806571321b83c41778533ca5867e89b356d77d3a2e_1280.jpg",
+    "https://pixabay.com/get/g767c3fe7f0e771a4a450089a945e17eac139939d6ae6f74ae4c72d7a54c9ffa665cd0b91c42de2028a0f03f83243dbf0c27828d9f9e793a55d0128075cbdf6a2_1280.jpg",
+    "https://pixabay.com/get/ga79458265ae9a3b64dd9d2fda97b1f1ba256247f1bc59bbdd1f3cf87a553a15285ed0cc5536845eb107e161d2a9dfd9d8330881f443c3b97d17f1679eb5929de_1280.jpg",
+    "https://pixabay.com/get/gd478f940fe612c6d4145d4ceb693cac5eb2ff66c8d304c06cf41318cfb6ababa22c0e6f8b2bf1637d03145ae533536610f06259807c775355cd1c87c54a79bca_1280.jpg",
+    "https://pixabay.com/get/gd7500d08cda460244c554db00ffa8a153f721ab77d3f971d11b99b2ef8d59f35f8a21d8fe83413a736f1427736dcd5b39c27a684394859ed0e8bdd310152cd04_1280.jpg",
+    "https://pixabay.com/get/ge122b63955db9ad18989cf39aeb67ddf7c95eb3dd75b3b6283a8a82e523f6c29eb48107575cf664ba6ff4cdd001acb93b3f462f9fcfc06e9b75d5b3a080acc37_1280.jpg"
+  ]
+}
